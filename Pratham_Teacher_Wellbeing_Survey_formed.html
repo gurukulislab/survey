@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratham — Teacher Wellbeing Study 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1714;--ink2:#4a4743;--ink3:#8a8784;
+  --bg:#faf8f4;--surface:#fff;--border:#e8e4dc;
+  --accent:#c85a2a;--accent-light:#fdf0ea;
+  --green:#2a7a4e;--green-light:#eaf4f0;
+  --tag-obj-bg:#eaf4f0;--tag-obj:#2a6e5a;
+  --tag-sub-bg:#eaf0fc;--tag-sub:#2a4e8c;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;min-height:100vh}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;background:var(--ink)}
+.topbar-inner{display:flex;align-items:center;gap:16px;padding:13px 28px;max-width:740px;margin:0 auto}
+.p-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.p-logo-icon{width:30px;height:30px;border-radius:7px;background:#e8f4ec;display:flex;align-items:center;justify-content:center}
+.p-logo-text{font-size:14px;font-weight:500;color:#fff}
+.prog-wrap{flex:1;display:flex;flex-direction:column;gap:4px}
+.prog-lbl{font-size:10.5px;color:rgba(255,255,255,0.38);letter-spacing:.04em}
+.prog-track{height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:#6dbf94;border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.step-ctr{font-size:11.5px;color:rgba(255,255,255,0.45);flex-shrink:0;white-space:nowrap}
+
+/* HERO */
+.hero{background:var(--ink);color:#fff;padding:48px 28px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(200,90,42,0.13);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40px;left:140px;width:190px;height:190px;border-radius:50%;background:rgba(42,110,90,0.11);pointer-events:none}
+.hero-in{max-width:740px;margin:0 auto;position:relative;z-index:1}
+.hero h1{font-family:'Fraunces',serif;font-size:36px;font-weight:300;line-height:1.22;margin-bottom:13px}
+.hero h1 em{font-style:italic;color:#f4b08a}
+.hero p{font-size:14px;color:rgba(255,255,255,0.6);max-width:500px;line-height:1.65}
+.hero-meta{display:flex;gap:24px;margin-top:26px;flex-wrap:wrap}
+.hm-item{display:flex;flex-direction:column;gap:2px}
+.hm-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,0.33)}
+.hm-val{font-size:13px;color:rgba(255,255,255,0.8);font-weight:500}
+
+/* WRAP */
+.wrap{max-width:740px;margin:0 auto;padding:0 20px}
+
+/* STAGE */
+.stage{padding:36px 0 130px}
+
+/* SECTION STEP */
+.step{display:none}
+.step.active{display:block;animation:fadeUp .28s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION HEAD */
+.sec-pill{display:inline-flex;align-items:center;background:var(--green-light);color:var(--green);font-size:10.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-bottom:9px}
+.sec-title{font-family:'Fraunces',serif;font-size:25px;font-weight:300;margin-bottom:5px}
+.sec-sub{font-size:13px;color:var(--ink3);margin-bottom:26px}
+
+/* NOTICE */
+.notice{background:var(--accent-light);border:1px solid #f4c4a8;border-radius:12px;padding:17px 20px;margin-bottom:26px;display:flex;gap:13px}
+.notice-icon{font-size:19px;flex-shrink:0;line-height:1.4}
+.notice-body{font-size:13px;color:#7a3010;line-height:1.65}
+.notice-body strong{font-weight:500;display:block;margin-bottom:3px;font-size:13.5px}
+
+/* Q CARD */
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:13px;overflow:hidden}
+.q-card.has-error{border-color:#f4b08a}
+.q-card.has-error .err{display:block}
+.q-top{display:flex;gap:13px;padding:18px 20px 13px}
+.q-num{font-family:'Fraunces',serif;font-size:12px;color:var(--ink3);padding-top:3px;min-width:22px;flex-shrink:0}
+.q-body{flex:1}
+.q-text{font-size:14.5px;color:var(--ink);line-height:1.5;margin-bottom:4px}
+.q-hint{font-size:11.5px;color:var(--ink3);font-style:italic;line-height:1.5;margin-bottom:7px}
+.q-tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:100px;font-size:10.5px;font-weight:500}
+.tag.obj{background:var(--tag-obj-bg);color:var(--tag-obj)}
+.tag.sub{background:var(--tag-sub-bg);color:var(--tag-sub)}
+.req{color:var(--accent);margin-left:2px}
+
+.q-inputs{background:#faf8f4;border-top:1px solid var(--border);padding:13px 20px 15px 55px}
+.inputs-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:9px;font-weight:500}
+
+/* OPTIONS */
+.opt-list{display:flex;flex-direction:column;gap:6px}
+.opt-lbl{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);cursor:pointer;padding:7px 10px;border-radius:8px;transition:background .1s}
+.opt-lbl:hover{background:rgba(0,0,0,0.03)}
+.opt-lbl input[type="radio"],.opt-lbl input[type="checkbox"]{width:16px;height:16px;cursor:pointer;flex-shrink:0;accent-color:var(--accent)}
+
+/* SCALE */
+.scale-row{display:flex;gap:10px;align-items:flex-end;margin-bottom:6px}
+.scale-btn{display:flex;flex-direction:column;align-items:center;gap:5px}
+.scale-btn input[type="radio"]{width:22px;height:22px;cursor:pointer;accent-color:var(--accent)}
+.scale-btn span{font-size:11.5px;color:var(--ink3)}
+.scale-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3)}
+
+/* TEXTAREA */
+.q-textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--ink);background:var(--surface);resize:vertical;min-height:80px;outline:none;transition:border-color .15s}
+.q-textarea:focus{border-color:var(--accent)}
+.q-textarea::placeholder{color:#ccc}
+.q-textarea.tall{min-height:108px}
+.q-text-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--ink);background:var(--surface);outline:none;transition:border-color .15s;height:42px}
+.q-text-input:focus{border-color:var(--accent)}
+.q-text-input::placeholder{color:#ccc}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contact-field{display:flex;flex-direction:column;gap:6px}
+.contact-field label{font-size:12px;font-weight:500;color:var(--ink2)}
+.contact-opt-badge{display:inline-block;background:#f1efe8;color:var(--ink3);font-size:10px;padding:2px 7px;border-radius:100px;margin-left:5px}
+@media(max-width:480px){.contact-grid{grid-template-columns:1fr}}
+
+/* ERROR */
+.err{display:none;font-size:11.5px;color:var(--accent);margin-top:7px}
+
+/* SUBMIT BOX */
+.submit-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px 22px;text-align:center;margin-top:10px}
+.submit-box p{font-size:13px;color:var(--ink3);margin-bottom:16px;line-height:1.7}
+
+/* NAV BAR */
+.nav-bar{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 20px;z-index:90}
+.nav-inner{max-width:740px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.btn-back{background:none;border:1px solid var(--border);padding:10px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--ink2);cursor:pointer;transition:background .1s}
+.btn-back:hover{background:var(--bg)}
+.btn-back:disabled{opacity:.3;cursor:default}
+.btn-next{background:var(--ink);color:#fff;border:none;padding:11px 26px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;cursor:pointer;transition:background .12s,transform .1s;display:flex;align-items:center;gap:7px}
+.btn-next:hover{background:#2a2520}
+.btn-next:active{transform:scale(.98)}
+.btn-next:disabled{opacity:.45;cursor:default}
+.btn-next.green{background:var(--green)}
+.btn-next.green:hover{background:#1f5e3a}
+.nav-lbl{font-size:11.5px;color:var(--ink3)}
+
+/* SUCCESS */
+.success-screen{display:none;text-align:center;padding:80px 28px 120px;max-width:480px;margin:0 auto}
+.success-icon{font-size:50px;margin-bottom:22px}
+.success-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:13px;line-height:1.3}
+.success-text{font-size:14px;color:var(--ink3);line-height:1.7}
+
+/* FOOTER */
+.footer{background:var(--ink);color:rgba(255,255,255,0.38);text-align:center;padding:20px;font-size:11px}
+.footer strong{color:rgba(255,255,255,0.65)}
+
+@media(max-width:500px){
+  .hero h1{font-size:26px}
+  .hero{padding:32px 16px 32px}
+  .topbar-inner{padding:11px 14px}
+  .wrap{padding:0 14px}
+  .q-inputs{padding-left:20px}
+  .nav-lbl{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- REPLACE 1RKSAUJA66FtQfiBwq1r1i4OjFRduNV8UEMfEIWPq-Ys with your actual Google Form ID -->
+<!-- Entry IDs wired — Google Forms ready -->
+
+<!-- STICKY TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="p-logo">
+      <div class="p-logo-icon">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3" fill="#2a7a4e"/><path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="#2a7a4e" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <span class="p-logo-text">Pratham</span>
+    </div>
+    <div class="prog-wrap">
+      <div class="prog-lbl" id="progLbl">Section 1 of 9</div>
+      <div class="prog-track"><div class="prog-fill" id="progFill" style="width:11%"></div></div>
+    </div>
+    <div class="step-ctr" id="stepCtr">1 / 9</div>
+  </div>
+</div>
+
+<!-- HERO — hidden after step 1 -->
+<div class="hero" id="heroBlock">
+  <div class="hero-in">
+    <h1>How are <em>you</em> really doing?</h1>
+    <p>Pratham is conducting a nationwide study to understand the real pressures teachers face — workload, recognition, emotional stress, and everything in between. Your honest answers help us advocate for teachers at a policy level.</p>
+    <div class="hero-meta">
+      <div class="hm-item"><span class="hm-lbl">Time needed</span><span class="hm-val">10–15 minutes</span></div>
+      <div class="hm-item"><span class="hm-lbl">Anonymity</span><span class="hm-val">Fully anonymous</span></div>
+      <div class="hm-item"><span class="hm-lbl">Purpose</span><span class="hm-val">Policy &amp; advocacy</span></div>
+    </div>
+  </div>
+</div>
+
+<form id="surveyForm" novalidate autocomplete="off">
+<div class="wrap"><div class="stage">
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">🌱</div>
+    <div class="success-title">Thank you for your honesty.</div>
+    <div class="success-text">Your response has been recorded anonymously. Pratham will use findings from this study to publish a national report on teacher wellbeing and advocate for better support structures for educators across India.</div>
+  </div>
+
+  <!-- STEP 1 — ABOUT YOU -->
+  <div class="step active" id="step-1" data-label="About you">
+    <div class="notice">
+      <div class="notice-icon">🙏</div>
+      <div class="notice-body">
+        <strong>Before you begin</strong>
+        This study is not about evaluating you or your school. It is about understanding what teaching in India really feels like today. Your answers are fully anonymous and feed into our national advocacy report for teacher welfare.
+      </div>
+    </div>
+    <div class="sec-pill">Section A</div>
+    <div class="sec-title">About you</div>
+    <div class="sec-sub">A few quick details to help us understand your context.</div>
+
+    <div class="q-card" id="card-a1">
+      <div class="q-top"><div class="q-num">A1</div><div class="q-body">
+        <div class="q-text">How many years have you been teaching?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.824045611" value="Less than 2 years"><span>Less than 2 years</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.824045611" value="2 – 5 years"><span>2 – 5 years</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.824045611" value="6 – 10 years"><span>6 – 10 years</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.824045611" value="11 – 20 years"><span>11 – 20 years</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.824045611" value="More than 20 years"><span>More than 20 years</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">A2</div><div class="q-body">
+        <div class="q-text">Which grades do you currently teach?</div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.782947229" value="Pre-Primary (Nursery – KG)"><span>Pre-Primary (Nursery – KG)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.782947229" value="Primary (Grades 1 – 5)"><span>Primary (Grades 1 – 5)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.782947229" value="Middle School (Grades 6 – 8)"><span>Middle School (Grades 6 – 8)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.782947229" value="Secondary (Grades 9 – 10)"><span>Secondary (Grades 9 – 10)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.782947229" value="Senior Secondary (Grades 11 – 12)"><span>Senior Secondary (Grades 11 – 12)</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card" id="card-a3">
+      <div class="q-top"><div class="q-num">A3</div><div class="q-body">
+        <div class="q-text">How many sections / classes are you responsible for?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.1598332034" value="1 – 2 sections"><span>1 – 2 sections</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1598332034" value="3 – 5 sections"><span>3 – 5 sections</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1598332034" value="6 – 8 sections"><span>6 – 8 sections</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1598332034" value="More than 8 sections"><span>More than 8 sections</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 — LESSON PLANNING -->
+  <div class="step" id="step-2" data-label="Lesson planning">
+    <div class="sec-pill">Section B</div>
+    <div class="sec-title">Planning &amp; lesson preparation</div>
+    <div class="sec-sub">How you prepare for class — and what it actually costs you.</div>
+
+    <div class="q-card" id="card-b1">
+      <div class="q-top"><div class="q-num">B1</div><div class="q-body">
+        <div class="q-text">Do you create lesson plans before each class? If yes, how would you describe the experience?<span class="req">*</span></div>
+        <div class="q-hint">Think about whether you find it valuable or more of a burden.</div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.700519713" value="Yes — I create detailed plans and find them genuinely useful"><span>Yes — I create detailed plans and find them genuinely useful</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.700519713" value="Yes — but it's time-consuming and feels like a checkbox exercise"><span>Yes — but it's time-consuming and feels like a checkbox exercise</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.700519713" value="Sometimes — only for complex or new topics"><span>Sometimes — only for complex or new topics</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.700519713" value="Rarely — I rely on experience and the textbook"><span>Rarely — I rely on experience and the textbook</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.700519713" value="No — the school doesn't require it and I don't have time"><span>No — the school doesn't require it and I don't have time</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card" id="card-b2">
+      <div class="q-top"><div class="q-num">B2</div><div class="q-body">
+        <div class="q-text">On average, how much time do you spend preparing for one hour of teaching?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.836448209" value="Less than 15 minutes"><span>Less than 15 minutes</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.836448209" value="15 – 30 minutes"><span>15 – 30 minutes</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.836448209" value="30 – 60 minutes"><span>30 – 60 minutes</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.836448209" value="More than 1 hour"><span>More than 1 hour</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">B3</div><div class="q-body">
+        <div class="q-text">What is the hardest part of planning a lesson? What slows you down the most?</div>
+        <div class="q-hint">E.g. finding the right examples, handling different learning levels, estimating time per concept.</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.794879751" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">B4</div><div class="q-body">
+        <div class="q-text">When it comes to lesson planning, what kind of support would genuinely help you the most?</div>
+        <div class="q-hint">Think about the support structure that would actually make a difference — not technology.</div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103814596" value="More free periods for planning during school hours"><span>More free periods for planning during school hours</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103814596" value="Ready-made lesson outlines or frameworks to adapt"><span>Ready-made lesson outlines or frameworks I can adapt</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103814596" value="Better information about where each student is struggling"><span>Better information about which students are struggling with what</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103814596" value="Collaboration time with other teachers of the same subject"><span>Collaboration time with other teachers of the same subject</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103814596" value="Access to good teaching examples and activities"><span>Access to good examples and classroom activities</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 — NON-ACADEMIC WORK -->
+  <div class="step" id="step-3" data-label="Beyond the classroom">
+    <div class="sec-pill">Section C</div>
+    <div class="sec-title">Beyond the classroom</div>
+    <div class="sec-sub">The non-teaching responsibilities that quietly eat into your time.</div>
+
+    <div class="q-card" id="card-c1">
+      <div class="q-top"><div class="q-num">C1</div><div class="q-body">
+        <div class="q-text">Which non-academic responsibilities do you handle regularly?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Planning or coordinating school events (annual day, sports day, etc.)"><span>Planning or coordinating school events (annual day, sports day, etc.)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Organizing field trips or excursions"><span>Organizing field trips or excursions</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Filling in admin reports or registers"><span>Filling in admin reports or registers</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Managing student records or documentation"><span>Managing student records or documentation</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Coordinating with parents outside school hours"><span>Coordinating with parents outside school hours</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Supervising exams or conducting assessments"><span>Supervising exams or conducting assessments</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Duty roster work (morning assembly, lunch duty, etc.)"><span>Duty roster work (morning assembly, lunch duty, etc.)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1140819945" value="Other"><span>Other</span></label>
+        </div>
+        <div class="err">Please select at least one option.</div>
+      </div>
+    </div>
+
+    <div class="q-card" id="card-c2">
+      <div class="q-top"><div class="q-num">C2</div><div class="q-body">
+        <div class="q-text">Roughly how many hours per week do you spend on non-teaching tasks?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.160947327" value="Less than 2 hours"><span>Less than 2 hours</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.160947327" value="2 – 5 hours"><span>2 – 5 hours</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.160947327" value="5 – 10 hours"><span>5 – 10 hours</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.160947327" value="More than 10 hours"><span>More than 10 hours</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">C3</div><div class="q-body">
+        <div class="q-text">Which non-academic task feels most disorganized or frustrating? What would make it easier?</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.478677664" placeholder="Your answer here…"></textarea></div>
+    </div>
+  </div>
+
+  <!-- STEP 4 — PARENT COMMUNICATION -->
+  <div class="step" id="step-4" data-label="Parent communication">
+    <div class="sec-pill">Section D</div>
+    <div class="sec-title">Parent engagement &amp; PTMs</div>
+    <div class="sec-sub">How communication with families actually feels from your side.</div>
+
+    <div class="q-card" id="card-d1">
+      <div class="q-top"><div class="q-num">D1</div><div class="q-body">
+        <div class="q-text">In your experience, how engaged are parents in Parent-Teacher Meetings?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.1636542199" value="Very engaged — most parents attend and have meaningful conversations"><span>Very engaged — most parents attend and have meaningful conversations</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1636542199" value="Mixed — some parents are engaged, others come just to go through the motions"><span>Mixed — some are engaged, others just go through the motions</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1636542199" value="Low — attendance is poor and conversations stay very surface level"><span>Low — attendance is poor and conversations stay surface level</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1636542199" value="It varies a lot by the student's performance"><span>It varies a lot by the student's performance</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">D2</div><div class="q-body">
+        <div class="q-text">What frustrates you most about parent communication? And what works well?</div>
+        <div class="q-hint">Think about channels you use — WhatsApp, diary, phone calls — and how responsive parents tend to be.</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.743064964" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <div class="q-card" id="card-d3">
+      <div class="q-top"><div class="q-num">D3</div><div class="q-body">
+        <div class="q-text">How do you typically communicate with parents outside of PTMs?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="Student diary / planner"><span>Student diary / planner</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="WhatsApp (personal number)"><span>WhatsApp (personal number)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="WhatsApp class group"><span>WhatsApp class group</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="School app or portal"><span>School app or portal</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="Phone call"><span>Phone call</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="Email"><span>Email</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.88379320" value="I mostly rely on parents coming to school"><span>I mostly rely on parents coming to school</span></label>
+        </div>
+        <div class="err">Please select at least one option.</div>
+      </div>
+    </div>
+
+    <div class="q-card" id="card-d4">
+      <div class="q-top"><div class="q-num">D4</div><div class="q-body">
+        <div class="q-text">After you share information with parents, how often do they actually read and respond?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Scale 1–5</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="scale-row">
+          <div class="scale-btn"><input type="radio" name="entry.495996589" value="1"><span>1</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.495996589" value="2"><span>2</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.495996589" value="3"><span>3</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.495996589" value="4"><span>4</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.495996589" value="5"><span>5</span></div>
+        </div>
+        <div class="scale-labels"><span>Rarely respond</span><span>Almost always respond</span></div>
+        <div class="err">Please select a value.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5 — FEEDBACK & PRESSURE -->
+  <div class="step" id="step-5" data-label="Pressure & recognition">
+    <div class="sec-pill">Section E</div>
+    <div class="sec-title">Feedback, pressure &amp; wellbeing</div>
+    <div class="sec-sub">How supported and heard you feel — the honest version.</div>
+
+    <div class="q-card" id="card-e1">
+      <div class="q-top"><div class="q-num">E1</div><div class="q-body">
+        <div class="q-text">When you receive feedback from school leadership or peers, how do you typically feel?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.949772061" value="I welcome it — it helps me grow and I act on it"><span>I welcome it — it helps me grow and I act on it</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.949772061" value="It depends — constructive feedback is fine, but criticism without support is hard"><span>It depends — constructive is fine, but criticism without support is hard</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.949772061" value="I find it stressful, especially when I'm already stretched thin"><span>I find it stressful, especially when I'm already stretched thin</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.949772061" value="I don't receive much feedback at all"><span>I don't receive much feedback at all</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card" id="card-e2">
+      <div class="q-top"><div class="q-num">E2</div><div class="q-body">
+        <div class="q-text">On an average school week, how pressurized do you feel?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Scale 1–5</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="scale-row">
+          <div class="scale-btn"><input type="radio" name="entry.1539234823" value="1"><span>1</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.1539234823" value="2"><span>2</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.1539234823" value="3"><span>3</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.1539234823" value="4"><span>4</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.1539234823" value="5"><span>5</span></div>
+        </div>
+        <div class="scale-labels"><span>Very calm</span><span>Constantly overwhelmed</span></div>
+        <div class="err">Please select a value.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">E3</div><div class="q-body">
+        <div class="q-text">What are the top 2 or 3 things that cause the most stress in your daily work?</div>
+        <div class="q-hint">Be as specific as possible — these answers are the most valuable part of our research.</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.1888935489" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <div class="q-card" id="card-e4">
+      <div class="q-top"><div class="q-num">E4</div><div class="q-body">
+        <div class="q-text">Do you feel your school gives you enough recognition for the effort you put in?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.1765179557" value="Yes, I feel genuinely valued"><span>Yes, I feel genuinely valued</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1765179557" value="Somewhat — recognition exists but it could be better"><span>Somewhat — recognition exists but could be better</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1765179557" value="Not really — the effort often goes unnoticed"><span>Not really — the effort often goes unnoticed</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1765179557" value="No — there is very little acknowledgement of the work teachers do"><span>No — very little acknowledgement of what teachers actually do</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 — LEARNING & GROWTH -->
+  <div class="step" id="step-6" data-label="Your growth">
+    <div class="sec-pill">Section F</div>
+    <div class="sec-title">Your own learning &amp; growth</div>
+    <div class="sec-sub">How you keep developing as an educator — when life allows it.</div>
+
+    <div class="q-card" id="card-f1">
+      <div class="q-top"><div class="q-num">F1</div><div class="q-body">
+        <div class="q-text">Do you actively seek opportunities to improve your teaching?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.75551540" value="Yes — I regularly seek out new ideas and approaches"><span>Yes — I regularly seek out new ideas and approaches</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.75551540" value="Sometimes — when time allows or when I feel stuck"><span>Sometimes — when time allows or when I feel stuck</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.75551540" value="Rarely — I'm too busy with daily demands"><span>Rarely — I'm too busy with daily demands</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.75551540" value="No — I feel I have enough experience to rely on"><span>No — I feel I have enough experience to rely on</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">F2</div><div class="q-body">
+        <div class="q-text">What kind of professional development would you find genuinely useful?</div>
+        <div class="q-hint">Not what the school asks you to attend — what would you choose for yourself?</div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="Pedagogy — better ways to explain and teach concepts"><span>Pedagogy — better ways to explain and teach concepts</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="Child psychology and classroom behaviour management"><span>Child psychology and classroom behaviour management</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="Subject-specific deep dives"><span>Subject-specific deep dives</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="How to handle students with learning difficulties"><span>How to handle students with learning difficulties</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="Using technology effectively in teaching"><span>Using technology effectively in teaching</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="Personal wellbeing and managing stress"><span>Personal wellbeing and managing stress</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.553446363" value="Parent communication and engagement strategies"><span>Parent communication and engagement strategies</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">F3</div><div class="q-body">
+        <div class="q-text">If you could learn one thing that would make you significantly better in the classroom, what would it be?</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.1169069830" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">F4</div><div class="q-body">
+        <div class="q-text">What is your preferred format for professional development?</div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.1286811527" value="Short audio clips I can listen to during free time (3 – 5 min)"><span>Short audio clips I can listen to during free time (3–5 min)</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1286811527" value="Video lessons at my own pace"><span>Video lessons at my own pace</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1286811527" value="Structured workshops with peers"><span>Structured workshops with peers</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1286811527" value="Reading articles or PDFs"><span>Reading articles or PDFs</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1286811527" value="One-on-one mentoring or observation sessions"><span>One-on-one mentoring or observation sessions</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 7 — TECHNOLOGY -->
+  <div class="step" id="step-7" data-label="Technology & tools">
+    <div class="sec-pill">Section G</div>
+    <div class="sec-title">Technology &amp; how you work</div>
+    <div class="sec-sub">Your relationship with digital tools in a school context.</div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">G1</div><div class="q-body">
+        <div class="q-text">Which tasks do you currently manage using your phone or a digital tool?</div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="Marking attendance"><span>Marking attendance</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="Tracking syllabus progress"><span>Tracking syllabus progress</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="Sending messages to parents"><span>Sending messages to parents</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="Checking / setting homework"><span>Checking / setting homework</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="Preparing assessments or question papers"><span>Preparing assessments or question papers</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="Recording student grades or performance"><span>Recording student grades or performance</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1103325436" value="None — I prefer paper-based methods"><span>None — I prefer paper-based methods</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card" id="card-g2">
+      <div class="q-top"><div class="q-num">G2</div><div class="q-body">
+        <div class="q-text">How comfortable are you with using a new digital system for school work?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Scale 1–5</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="scale-row">
+          <div class="scale-btn"><input type="radio" name="entry.285117517" value="1"><span>1</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.285117517" value="2"><span>2</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.285117517" value="3"><span>3</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.285117517" value="4"><span>4</span></div>
+          <div class="scale-btn"><input type="radio" name="entry.285117517" value="5"><span>5</span></div>
+        </div>
+        <div class="scale-labels"><span>Very uncomfortable</span><span>Very comfortable</span></div>
+        <div class="err">Please select a value.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">G3</div><div class="q-body">
+        <div class="q-text">When your school has introduced a new digital system or process, what has been your experience?</div>
+        <div class="q-hint">Think about whether it added to your workload or actually helped.</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.1326140597" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">G4</div><div class="q-body">
+        <div class="q-text">If you had more administrative or logistical support, which part of your work would benefit most?</div>
+        <div class="q-hint">Think about tasks that eat into your time but don't directly involve teaching students.</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.1346440806" placeholder="Your answer here…"></textarea></div>
+    </div>
+  </div>
+
+  <!-- STEP 8 — STUDENTS -->
+  <div class="step" id="step-8" data-label="Inside the classroom">
+    <div class="sec-pill">Section H</div>
+    <div class="sec-title">Students &amp; the classroom</div>
+    <div class="sec-sub">What happens inside the room where it matters most.</div>
+
+    <div class="q-card" id="card-h1">
+      <div class="q-top"><div class="q-num">H1</div><div class="q-body">
+        <div class="q-text">In a typical class, how well are you able to identify and support students who are falling behind?<span class="req">*</span></div>
+        <div class="q-tags"><span class="tag obj">Single choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="radio" name="entry.1476701782" value="I can usually spot them and give them attention in class"><span>I can usually spot them and give them attention in class</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1476701782" value="I can spot them but don't have enough time in class to help them individually"><span>I can spot them but don't have enough time to help individually</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1476701782" value="It's hard — with 30+ students, individual attention is nearly impossible"><span>It's hard — with 30+ students, individual attention is nearly impossible</span></label>
+          <label class="opt-lbl"><input type="radio" name="entry.1476701782" value="I rely mostly on test results to know who is struggling"><span>I rely mostly on test results to know who is struggling</span></label>
+        </div>
+        <div class="err">Please select an option to continue.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">H2</div><div class="q-body">
+        <div class="q-text">What is the biggest challenge you face in keeping students engaged in your lessons?</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea" name="entry.936912558" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">H3</div><div class="q-body">
+        <div class="q-text">When a student doesn't grasp a concept even after you've taught it, what do you usually do?</div>
+        <div class="q-tags"><span class="tag obj">Multiple choice</span></div>
+      </div></div>
+      <div class="q-inputs">
+        <div class="inputs-lbl">Select all that apply</div>
+        <div class="opt-list">
+          <label class="opt-lbl"><input type="checkbox" name="entry.1100060275" value="Reteach using a different explanation or example"><span>Reteach using a different explanation or example</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1100060275" value="Ask another student to explain it to them (peer teaching)"><span>Ask another student to explain it (peer teaching)</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1100060275" value="Give them extra practice work"><span>Give them extra practice work</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1100060275" value="Inform the parents and request home support"><span>Inform the parents and request home support</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1100060275" value="Move on — the class cannot wait for one student"><span>Move on — the class cannot wait for one student</span></label>
+          <label class="opt-lbl"><input type="checkbox" name="entry.1100060275" value="I don't always know which students haven't grasped it"><span>I don't always know which students haven't grasped it</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 9 — FINAL -->
+  <div class="step" id="step-9" data-label="Your voice">
+    <div class="sec-pill">Section I · Final</div>
+    <div class="sec-title">In your own words</div>
+    <div class="sec-sub">The most important part of the entire survey — just two questions, then you're done.</div>
+
+    <!-- I1 -->
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">I1</div><div class="q-body">
+        <div class="q-text">If you could change one thing about how you spend your time as a teacher — what would it be, and why?</div>
+        <div class="q-hint">There is no right answer. This is the most valuable question in our entire study.</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea tall" name="entry.1917507969" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <!-- I2 -->
+    <div class="q-card">
+      <div class="q-top"><div class="q-num">I2</div><div class="q-body">
+        <div class="q-text">Is there anything else you'd like us to know — something this survey didn't ask?</div>
+        <div class="q-tags"><span class="tag sub">In your own words</span></div>
+      </div></div>
+      <div class="q-inputs"><textarea class="q-textarea tall" name="entry.828059218" placeholder="Your answer here…"></textarea></div>
+    </div>
+
+    <!-- CONTACT — optional, framed as follow-up -->
+    <div class="q-card" style="border-style:dashed;border-color:#d4cfca;">
+      <div class="q-top"><div class="q-num" style="color:#b0ada8;">✉</div><div class="q-body">
+        <div class="q-text" style="font-size:14px;">Would you like to receive the findings of this study when we publish?</div>
+        <div class="q-hint">Completely optional. Share your details only if you'd like us to keep you informed. We will never contact you for any other purpose.</div>
+        <div class="q-tags"><span class="tag" style="background:#f1efe8;color:var(--ink3);">All fields optional</span></div>
+      </div></div>
+      <div class="q-inputs" style="padding-left:20px;">
+
+        <!-- Designation — full width -->
+        <div class="contact-field" style="margin-bottom:12px;">
+          <label>Designation <span class="contact-opt-badge">optional</span></label>
+          <!-- REPLACE entry.1716127961 -->
+          <select class="q-text-input" name="entry.1716127961" style="cursor:pointer;appearance:auto;">
+            <option value="">— Select your role —</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Senior Teacher / Subject Head">Senior Teacher / Subject Head</option>
+            <option value="Class Teacher">Class Teacher</option>
+            <option value="Head of Department">Head of Department</option>
+            <option value="Vice Principal">Vice Principal</option>
+            <option value="Principal">Principal</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <!-- Email + Phone — side by side -->
+        <div class="contact-grid">
+          <div class="contact-field">
+            <label>Email address <span class="contact-opt-badge">optional</span></label>
+            <!-- REPLACE entry.274688732 -->
+            <input class="q-text-input" type="email" name="entry.274688732" placeholder="you@example.com">
+          </div>
+          <div class="contact-field">
+            <label>Phone number <span class="contact-opt-badge">optional</span></label>
+            <!-- REPLACE entry.862663418 -->
+            <input class="q-text-input" type="tel" name="entry.862663418" placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="submit-box">
+      <p>Your answers are fully anonymous. Contact details above are <em>only</em> used to share study findings with you — nothing else, ever.</p>
+      <button type="submit" class="btn-next green" id="submitBtn" style="padding:13px 32px;font-size:14.5px;">Submit my response →</button>
+      <div style="margin-top:10px;font-size:12px;color:var(--ink3)" id="submitStatus"></div>
+    </div>
+  </div>
+
+</div></div><!-- /stage /wrap -->
+</form>
+
+<div class="footer">
+  <strong>Pratham</strong> &nbsp;·&nbsp; Teacher Wellbeing Initiative &nbsp;·&nbsp; Fully Anonymous &nbsp;·&nbsp; Results used for policy research and advocacy only
+</div>
+
+<!-- FIXED NAV -->
+<div class="nav-bar" id="navBar">
+  <div class="nav-inner">
+    <button class="btn-back" id="btnBack" disabled>← Back</button>
+    <span class="nav-lbl" id="navLbl">About you</span>
+    <button class="btn-next" id="btnNext">Next →</button>
+  </div>
+</div>
+
+<script>
+var FORM_ID='1RKSAUJA66FtQfiBwq1r1i4OjFRduNV8UEMfEIWPq-Ys';
+var SUBMIT_URL='https://docs.google.com/forms/d/'+FORM_ID+'/formResponse';
+var TOTAL=9, cur=1;
+
+var REQUIRED={
+  1:[['card-a1','radio'],['card-a3','radio']],
+  2:[['card-b1','radio'],['card-b2','radio']],
+  3:[['card-c1','checkbox'],['card-c2','radio']],
+  4:[['card-d1','radio'],['card-d3','checkbox'],['card-d4','radio']],
+  5:[['card-e1','radio'],['card-e2','radio'],['card-e4','radio']],
+  6:[['card-f1','radio']],
+  7:[['card-g2','radio']],
+  8:[['card-h1','radio']],
+  9:[]
+};
+
+function ui(){
+  document.querySelectorAll('.step').forEach(function(e){e.classList.remove('active')});
+  var s=document.getElementById('step-'+cur);
+  s.classList.add('active');
+  document.getElementById('heroBlock').style.display=cur===1?'':'none';
+  var pct=Math.round((cur/TOTAL)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progLbl').textContent='Section '+cur+' of '+TOTAL;
+  document.getElementById('stepCtr').textContent=cur+' / '+TOTAL;
+  document.getElementById('navLbl').textContent=s.getAttribute('data-label')||'';
+  document.getElementById('btnBack').disabled=cur===1;
+  var nb=document.getElementById('btnNext');
+  var nb2=document.getElementById('navBar');
+  if(cur===TOTAL){nb2.style.display='none'}
+  else{
+    nb2.style.display='';
+    nb.textContent=cur===TOTAL-1?'Last section →':'Next →';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function validate(n){
+  var reqs=REQUIRED[n]||[],first=null;
+  document.querySelectorAll('.q-card.has-error').forEach(function(e){e.classList.remove('has-error')});
+  reqs.forEach(function(r){
+    var card=document.getElementById(r[0]);
+    if(!card)return;
+    var ok=Array.from(card.querySelectorAll('input[type="'+r[1]+'"]')).some(function(i){return i.checked});
+    if(!ok){card.classList.add('has-error');if(!first)first=card}
+  });
+  if(first){first.scrollIntoView({behavior:'smooth',block:'center'});return false}
+  return true;
+}
+
+document.getElementById('btnNext').addEventListener('click',function(){
+  if(!validate(cur))return;
+  if(cur<TOTAL){cur++;ui()}
+});
+document.getElementById('btnBack').addEventListener('click',function(){
+  if(cur>1){cur--;ui()}
+});
+
+document.getElementById('surveyForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=document.getElementById('submitBtn'),st=document.getElementById('submitStatus');
+  btn.disabled=true;btn.textContent='Submitting…';
+  fetch(SUBMIT_URL,{method:'POST',mode:'no-cors',body:new FormData(document.getElementById('surveyForm'))})
+  .then(function(){
+    document.querySelectorAll('.step').forEach(function(e){e.classList.remove('active')});
+    document.getElementById('heroBlock').style.display='none';
+    document.getElementById('navBar').style.display='none';
+    document.getElementById('progFill').style.width='100%';
+    document.getElementById('progLbl').textContent='Complete';
+    document.getElementById('stepCtr').textContent='✓';
+    document.getElementById('successScreen').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent='Submit my response →';
+    st.textContent='Something went wrong. Please try again.';
+  });
+});
+
+ui();
+</script>
+</body>
+</html>
