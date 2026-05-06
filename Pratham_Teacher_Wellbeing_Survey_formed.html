@@ -163,7 +163,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font
       <div class="p-logo-icon">
         <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3" fill="#2a7a4e"/><path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="#2a7a4e" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
-      <span class="p-logo-text">(3) Pratham By Jigyasa Foundation</span>
+      <span class="p-logo-text">(4) Pratham By Jigyasa Foundation</span>
     </div>
     <div class="prog-wrap">
       <div class="prog-lbl" id="progLbl">Section 1 of 9</div>
@@ -787,7 +787,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font
 
 <script>
 var FORM_ID='1RKSAUJA66FtQfiBwq1r1i4OjFRduNV8UEMfEIWPq-Ys';
-var SUBMIT_URL='https://docs.google.com/forms/d/e/1FAIpQLSdwUXroCsmISQaguw-1otA5xqhYwFvLaVxo-zB1Ni4c14vCBA/formResponse';
+var PROXY_URL='https://script.google.com/macros/s/AKfycbyTbNIcmz1frT6HI0gANnOAEQYFBxIMe3eoCD11_8Oo59MWdjaElT2ngn50FvFp9SDI/exec'; // Apps Script web app URL
 var TOTAL=9, cur=1;
 
 var REQUIRED={
@@ -849,55 +849,49 @@ document.getElementById('surveyForm').addEventListener('submit',function(e){
   var btn=document.getElementById('submitBtn'),st=document.getElementById('submitStatus');
   btn.disabled=true;btn.textContent='Submitting…';
 
-  // Hidden iframe technique — most reliable for Google Forms cross-origin submission
+  // Collect form data into a JSON object, arrays for checkboxes
   var form=document.getElementById('surveyForm');
-  var params=new URLSearchParams();
+  var payload={};
 
   form.querySelectorAll('input,select,textarea').forEach(function(el){
     if(!el.name)return;
     if((el.type==='radio'||el.type==='checkbox')&&!el.checked)return;
-    params.append(el.name, el.value);
+    if(payload[el.name]){
+      // Already exists — make it an array (for checkboxes)
+      if(!Array.isArray(payload[el.name])) payload[el.name]=[payload[el.name]];
+      payload[el.name].push(el.value);
+    } else {
+      payload[el.name]=el.value;
+    }
   });
 
-  // Create a hidden iframe as the form target
-  var iframe=document.createElement('iframe');
-  iframe.name='hidden_iframe';
-  iframe.id='hidden_iframe';
-  iframe.style.display='none';
-  document.body.appendChild(iframe);
-
-  // Create a real HTML form and submit it into the iframe
-  var tempForm=document.createElement('form');
-  tempForm.method='POST';
-  tempForm.action=SUBMIT_URL;
-  tempForm.target='hidden_iframe';
-  tempForm.style.display='none';
-
-  params.forEach(function(value, key){
-    var input=document.createElement('input');
-    input.type='hidden';
-    input.name=key;
-    input.value=value;
-    tempForm.appendChild(input);
+  // POST to Apps Script proxy as JSON — proxy forwards to Google Forms server-side
+  fetch(PROXY_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if(data.success){
+      document.querySelectorAll('.step').forEach(function(e){e.classList.remove('active')});
+      document.getElementById('heroBlock').style.display='none';
+      document.getElementById('navBar').style.display='none';
+      document.getElementById('progFill').style.width='100%';
+      document.getElementById('progLbl').textContent='Complete';
+      document.getElementById('stepCtr').textContent='✓';
+      document.getElementById('successScreen').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      btn.disabled=false;
+      btn.textContent='Submit my response →';
+      st.textContent='Submission failed. Please try again.';
+    }
+  })
+  .catch(function(){
+    btn.disabled=false;
+    btn.textContent='Submit my response →';
+    st.textContent='Something went wrong. Please try again.';
   });
-
-  document.body.appendChild(tempForm);
-
-  // Show success after a short delay (iframe load)
-  iframe.onload=function(){
-    document.querySelectorAll('.step').forEach(function(e){e.classList.remove('active')});
-    document.getElementById('heroBlock').style.display='none';
-    document.getElementById('navBar').style.display='none';
-    document.getElementById('progFill').style.width='100%';
-    document.getElementById('progLbl').textContent='Complete';
-    document.getElementById('stepCtr').textContent='✓';
-    document.getElementById('successScreen').style.display='block';
-    window.scrollTo({top:0,behavior:'smooth'});
-    // cleanup
-    document.body.removeChild(tempForm);
-  };
-
-  tempForm.submit();
 });
 
 ui();
