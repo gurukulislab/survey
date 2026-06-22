@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jigyasa Foundation Parent Survey</title>
+<title>GIS Parent Survey</title>
 <style>
 body{font-family:Arial,sans-serif;max-width:700px;margin:0 auto;padding:20px;background:#faf8f4}
 .card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:20px;margin:12px 0}
@@ -12,7 +12,7 @@ input,textarea,select{width:100%;padding:10px;margin-top:8px}
 </style>
 </head>
 <body>
-<h1>Jigyasa Foundation – Parent Survey</h1>
+<h1> – Parent Survey</h1>
 <p>This starter template demonstrates section-by-section autosave.</p>
 <div class="card">
 <label>Biggest challenge regarding your child's education</label>
@@ -28,62 +28,32 @@ localStorage.setItem('gis_response_id', RESPONSE_ID);
 const API_URL = "https://script.google.com/macros/s/AKfycbwAym52DenexMLg3mPoUVoALZGCqSdHmTmoxa2zzCtLX3im8ymTINl8pczgFExB1ZmXUg/exec";
 
 async function saveSection(){
+
  const payload = {
    responseId: RESPONSE_ID,
    section: 1,
    completed: false,
-   answers: { q1: document.getElementById('q1').value }
+   answers: {
+      q1: document.getElementById('q1').value
+   }
  };
- await fetch(API_URL,{
-   method:'POST',
-   body:JSON.stringify(payload)
- });
- alert('Saved');
-}
 
-function doPost(e) {
-  try {
+ try {
 
-    const sheet =
-      SpreadsheetApp
-      .getActiveSpreadsheet()
-      .getSheetByName("Responses");
+   await fetch(API_URL,{
+      method:'POST',
+      mode:'no-cors',
+      body:JSON.stringify(payload)
+   });
 
-    const data =
-      JSON.parse(e.postData.contents);
+   alert("Sent");
 
-    sheet.appendRow([
-      new Date(),
-      data.responseId,
-      data.section,
-      JSON.stringify(data.answers),
-      data.completed
-    ]);
+ } catch(err){
 
-    return ContentService
-      .createTextOutput(
-        JSON.stringify({
-          success:true
-        })
-      )
-      .setMimeType(
-        ContentService.MimeType.JSON
-      );
+   alert(err);
 
-  } catch(err) {
+ }
 
-    return ContentService
-      .createTextOutput(
-        JSON.stringify({
-          success:false,
-          error:String(err)
-        })
-      )
-      .setMimeType(
-        ContentService.MimeType.JSON
-      );
-  }
-}
-</script>
+}</script>
 </body>
 </html>
