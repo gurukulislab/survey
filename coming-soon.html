@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Smooch+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #05070f; }
+    * { box-sizing: border-box; }
+    @keyframes gkPulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+    @keyframes gkFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    ::selection { background: rgba(86,207,254,.28); }
+    ::placeholder { color: rgba(180,196,224,.45); }
+  </style>
+</helmet>
+<div ref="{{ bindRoot }}" style="position: relative; min-height: 100vh; width: 100%; overflow: hidden; background:
+    radial-gradient(70% 55% at 50% 40%, rgba(16,30,58,.85), transparent 70%),
+    radial-gradient(120% 90% at 20% 6%, rgba(86,207,254,.09), transparent 55%),
+    radial-gradient(120% 90% at 82% 94%, rgba(181,124,246,.10), transparent 55%),
+    #05070f;
+    font-family: 'Space Grotesk', system-ui, sans-serif;">
+
+  <!-- subtle neural 'brain-cell pulse' ambience -->
+  <canvas ref="{{ bindCanvas }}" id="gk-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0;"></canvas>
+
+  <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(75% 60% at 50% 44%, transparent 42%, rgba(5,7,15,.5) 100%);"></div>
+
+  <div style="position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: clamp(34px, 5vh, 110px); padding: 40px 24px 30px; text-align: center;">
+
+    <!-- top: coming soon pill -->
+    <div ref="{{ bindPill }}" style="display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(126,158,214,.24); background: rgba(20,28,52,.4); backdrop-filter: blur(8px); opacity: 0; transition: opacity .9s ease;">
+      <span style="width: 7px; height: 7px; border-radius: 999px; background: #56cffe; box-shadow: 0 0 12px 2px rgba(86,207,254,.9); animation: gkPulse 2.4s ease-in-out infinite;"></span>
+      <span style="font-size: 11.5px; letter-spacing: .34em; text-transform: uppercase; color: #b7c4dc;">Coming Soon</span>
+    </div>
+
+    <!-- center: hero video + wordmark + tagline + capture -->
+    <div ref="{{ bindReveal }}" style="display: flex; flex-direction: column; align-items: center; max-width: 760px; margin: 0; gap: 2px; opacity: 0; transition: opacity .9s ease;">
+
+      <!-- hero video, edges feathered into the page -->
+      <div style="position: relative; width: clamp(300px, 58vw, 600px);">
+        <div style="position: absolute; inset: 6% 8%; z-index: 0; border-radius: 50%; background: radial-gradient(closest-side, rgba(86,207,254,.16), rgba(181,124,246,.10) 55%, transparent 78%); filter: blur(26px);"></div>
+        <video ref="{{ bindVideo }}" muted loop autoplay playsinline preload="auto" aria-label="Gurukulam.ai" style="position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 26%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0) 78%), linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%); -webkit-mask-composite: source-in; mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 26%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0) 78%), linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%); mask-composite: intersect;">
+          <source src="https://gurukulislab.github.io/survey/Hero2.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <h1 style="margin: 8px 0 0; font-family: 'Smooch Sans', sans-serif; font-weight: 600; letter-spacing: .01em; color: #f1f4fb; font-size: clamp(52px, 10vw, 96px); line-height: .95;">Gurukulam<span style="color: #56cffe;">.</span><span style="background: linear-gradient(96deg,#56cffe,#b57cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">ai</span></h1>
+
+      <p style="margin: 22px 0 0; color: #8b99b6; font-size: clamp(13px, 2.2vw, 16px); line-height: 1.7; white-space: nowrap;">Innovation-driven educational research — building AI rooted in Indian ethos.</p>
+
+    </div>
+
+    <!-- footer: contact -->
+    <div ref="{{ bindFooter }}" style="display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 0; padding-top: 4px; opacity: 0; transition: opacity .9s ease;">
+      <a href="/cdn-cgi/l/email-protection#abc3cec7c7c4ebccded9dec0dec7cac685cac2" style="color: #93a2c0; text-decoration: none; font-size: 13.5px; letter-spacing: .04em; border-bottom: 1px solid rgba(147,162,192,.28); padding-bottom: 2px;" style-hover="color: #cfe6ff; border-color: rgba(207,230,255,.6);"><span class="__cf_email__" data-cfemail="fa929f969695ba9d8f888f918f969b97d49b93">info@gurukulam.ai</span></a>
+      <span style="color: #4d5975; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; margin-top: 8px;">© 2026 Gurukulam.ai</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Cyan → Violet&quot;,&quot;Saffron → Gold&quot;,&quot;Emerald → Teal&quot;],&quot;default&quot;:&quot;Saffron → Gold&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ambience&quot;},&quot;ambience&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:5,&quot;default&quot;:75,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ambience&quot;,&quot;unit&quot;:&quot;%&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Calm&quot;,&quot;Lively&quot;],&quot;default&quot;:&quot;Lively&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ambience&quot;}}">
+class Component extends DCLogic {
+  state = { email: "", submitted: false };
+
+  palettes() {
+    return {
+      "Cyan → Violet":  { a: "#56cffe", b: "#b57cf6" },
+      "Saffron → Gold": { a: "#ffb257", b: "#ffd76a" },
+      "Emerald → Teal": { a: "#5fe0b0", b: "#4fb8d8" },
+    };
+  }
+  activePalette() { return this.palettes()[this.props.accent] || this.palettes()["Cyan → Violet"]; }
+  hexToRgb(h) { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+  mix(A, B, t) { return [Math.round(A[0]+(B[0]-A[0])*t), Math.round(A[1]+(B[1]-A[1])*t), Math.round(A[2]+(B[2]-A[2])*t)]; }
+
+  bindRoot = (el) => { this.rootEl = el; };
+  bindCanvas = (el) => { this.canvasEl = el; };
+  bindVideo = (el) => { this.videoEl = el; };
+  bindPill = (el) => { this.pillEl = el; };
+  bindReveal = (el) => { this.revealEl = el; };
+  bindFooter = (el) => { this.footerEl = el; };
+
+  _reveal = () => {
+    if (this._revealed) return;
+    this._revealed = true;
+    [this.pillEl, this.revealEl, this.footerEl].forEach((el) => { if (el) el.style.opacity = "1"; });
+  };
+
+  componentDidMount() {
+    this.raf = 0;
+    // --- video: force autoplay + persist loop position ---
+    const v = this.videoEl;
+    if (v) {
+      v.muted = true;
+      v.loop = true;
+      try { const s = parseFloat(localStorage.getItem("gk_hero_video_t") || "0"); if (s > 0 && s < (v.duration || 9.8) - 0.3) v.currentTime = s; } catch (e) {}
+      const p = v.play(); if (p && p.catch) p.catch(() => {});
+      this._lastSave = 0;
+      v.addEventListener("timeupdate", this._onTime);
+      // reveal content only once the video is fully ready to play through
+      this._onReady = () => this._reveal();
+      v.addEventListener("canplaythrough", this._onReady);
+      v.addEventListener("loadeddata", () => { if (v.readyState >= 4) this._reveal(); });
+      if (v.readyState >= 4) this._reveal();
+      // safety net so content is never permanently hidden
+      this._revealTimer = setTimeout(this._reveal, 6000);
+      // keep it looping even if the loop attribute is dropped by the browser
+      v.addEventListener("ended", () => { v.currentTime = 0; const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); });
+    }
+    // --- ambient neural background ---
+    this._setup();
+    this._onResize = () => this._size();
+    window.addEventListener("resize", this._onResize);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    clearTimeout(this._revealTimer);
+    window.removeEventListener("resize", this._onResize);
+    if (this.videoEl) {
+      this.videoEl.removeEventListener("timeupdate", this._onTime);
+      if (this._onReady) this.videoEl.removeEventListener("canplaythrough", this._onReady);
+    }
+  }
+
+  _onTime = () => {
+    const v = this.videoEl; if (!v) return;
+    const now = performance.now();
+    if (now - this._lastSave > 500) { this._lastSave = now; try { localStorage.setItem("gk_hero_video_t", String(v.currentTime)); } catch (e) {} }
+  };
+
+  _setup() {
+    const c = this.canvasEl || document.getElementById("gk-canvas");
+    if (!c) return;
+    this.ctx = c.getContext("2d");
+    this._size();
+    if (!this._running) { this._running = true; this.t0 = performance.now(); this._last = this.t0; this._nextSpawn = 0; this._loop(); }
+  }
+
+  _size() {
+    const c = this.canvasEl || document.getElementById("gk-canvas");
+    if (!c) return;
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = c.clientWidth || window.innerWidth, h = c.clientHeight || window.innerHeight;
+    c.width = Math.round(w * this.dpr); c.height = Math.round(h * this.dpr);
+    this.W = c.width; this.H = c.height;
+    this._buildNodes();
+  }
+
+  _buildNodes() {
+    const W = this.W, H = this.H, dpr = this.dpr;
+    const n = Math.max(18, Math.min(34, Math.round((W * H) / (78000 * dpr * dpr))));
+    this.nodes = [];
+    for (let i = 0; i < n; i++) {
+      this.nodes.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.14 * dpr,
+        vy: (Math.random() - 0.5) * 0.14 * dpr,
+        r: (Math.random() * 1.4 + 1.1) * dpr,
+        phase: Math.random() * Math.PI * 2,
+        t: Math.min(1, Math.max(0, (Math.random()))),
+      });
+    }
+    this.linkDist = Math.min(W, H) * 0.24;
+    this.signals = [];
+  }
+
+  _spawnSignal() {
+    const N = this.nodes; if (!N || N.length < 2) return;
+    const D = this.linkDist;
+    // pick a random node that has a neighbour within link distance
+    for (let tries = 0; tries < 8; tries++) {
+      const a = (Math.random() * N.length) | 0;
+      const cand = [];
+      for (let j = 0; j < N.length; j++) {
+        if (j === a) continue;
+        const dx = N[a].x - N[j].x, dy = N[a].y - N[j].y;
+        if (dx * dx + dy * dy < D * D) cand.push(j);
+      }
+      if (cand.length) {
+        const b = cand[(Math.random() * cand.length) | 0];
+        this.signals.push({ from: a, to: b, t: 0, speed: 0.5 + Math.random() * 0.5 });
+        return;
+      }
+    }
+  }
+
+  _loop = () => {
+    const ctx = this.ctx; if (!ctx) return;
+    const now = performance.now();
+    const dt = Math.min(0.05, (now - this._last) / 1000); this._last = now;
+    const t = (now - this.t0) / 1000;
+    const W = this.W, H = this.H;
+    ctx.clearRect(0, 0, W, H);
+
+    const pal = this.activePalette();
+    const A = this.hexToRgb(pal.a), B = this.hexToRgb(pal.b);
+    const intensity = (this.props.ambience != null ? this.props.ambience : 50) / 100;
+    const spd = (this.props.motion === "Lively") ? 1.7 : 1;
+
+    const N = this.nodes;
+    // drift
+    for (let i = 0; i < N.length; i++) {
+      const p = N[i];
+      p.x += p.vx * spd; p.y += p.vy * spd;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    }
+
+    ctx.globalCompositeOperation = "lighter";
+    const D = this.linkDist;
+    // synapse lines
+    for (let i = 0; i < N.length; i++) {
+      const a = N[i];
+      for (let j = i + 1; j < N.length; j++) {
+        const b = N[j];
+        const dx = a.x - b.x, dy = a.y - b.y; const d2 = dx * dx + dy * dy;
+        if (d2 < D * D) {
+          const d = Math.sqrt(d2);
+          const al = (1 - d / D) * 0.30 * intensity;
+          const c = this.mix(A, B, (a.t + b.t) / 2);
+          ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${al})`;
+          ctx.lineWidth = 1 * this.dpr;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    // cell bodies (slow pulse)
+    for (let i = 0; i < N.length; i++) {
+      const p = N[i];
+      const c = this.mix(A, B, p.t);
+      const pulse = 0.55 + 0.45 * Math.sin(t * 0.9 * spd + p.phase);
+      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.15 * intensity * pulse})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.85 * intensity * (0.6 + 0.4 * pulse)})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    // firing signals travelling along synapses
+    this._nextSpawn -= dt;
+    if (this._nextSpawn <= 0 && this.signals.length < 4) { this._spawnSignal(); this._nextSpawn = 0.7 + Math.random() * 1.6; }
+    for (let i = this.signals.length - 1; i >= 0; i--) {
+      const s = this.signals[i];
+      s.t += s.speed * spd * dt;
+      if (s.t >= 1) { this.signals.splice(i, 1); continue; }
+      const a = N[s.from], b = N[s.to]; if (!a || !b) { this.signals.splice(i, 1); continue; }
+      const x = a.x + (b.x - a.x) * s.t, y = a.y + (b.y - a.y) * s.t;
+      const fade = Math.sin(s.t * Math.PI); // in-out
+      const c = this.mix(A, B, s.t);
+      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.22 * intensity * fade})`;
+      ctx.beginPath(); ctx.arc(x, y, 8 * this.dpr, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(${Math.min(255,c[0]+60)},${Math.min(255,c[1]+60)},${Math.min(255,c[2]+60)},${0.9 * intensity * fade})`;
+      ctx.beginPath(); ctx.arc(x, y, 2 * this.dpr, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalCompositeOperation = "source-over";
+
+    this.raf = requestAnimationFrame(this._loop);
+  };
+
+  onEmailChange = (e) => this.setState({ email: e.target.value });
+  onSubmit = (e) => { e.preventDefault(); if (this.state.email && this.state.email.includes("@")) this.setState({ submitted: true }); };
+
+  renderVals() {
+    return {
+      bindRoot: this.bindRoot,
+      bindCanvas: this.bindCanvas,
+      bindVideo: this.bindVideo,
+      bindPill: this.bindPill,
+      bindReveal: this.bindReveal,
+      bindFooter: this.bindFooter,
+      email: this.state.email,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      onEmailChange: this.onEmailChange,
+      onSubmit: this.onSubmit,
+    };
+  }
+}
+</script>
+</body>
+</html>

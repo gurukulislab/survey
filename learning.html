@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning and teaching · Gurukulam</title>
+<meta name="description" content="Early warnings tell the class teacher who needs help this week.">
+<meta property="og:title" content="Learning and teaching · Gurukulam">
+<meta property="og:description" content="Early warnings tell the class teacher who needs help this week.">
+<meta name="theme-color" content="#0b162a">
+<script>
+/* scroll-in is on only when scripting works and motion is allowed; if site.js never reports ready, show everything */
+(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('js');setTimeout(function(){if(!window.__rvReady)d.classList.remove('js')},3000)})();
+</script>
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel:wght@400;600;700;800&family=Mukta:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+
+body{margin:0}
+.stick{position:sticky;top:0;z-index:60}
+.m-hero{position:relative;overflow:hidden;padding:clamp(36px,5vw,72px) 0 clamp(72px,8vw,112px)}
+.m-hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,4vw,64px);align-items:center}
+.crumb{display:flex;align-items:center;gap:8px;font:600 14px/20px var(--sans);color:var(--ink-muted)}
+.crumb a{color:var(--ink-muted);text-decoration:none}
+.crumb a:hover{color:var(--brand)}
+.mh-name{font:800 clamp(40px,5.4vw,68px)/1.05 var(--display);letter-spacing:-.02em;margin:14px 0 0}
+.mh-dev{font:600 22px/1.2 var(--display);color:var(--ink-muted);margin-top:8px}
+.mh-cta{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin-top:30px}
+.m-vis{position:relative;padding:0 24px 40px 0}
+@media (max-width:900px){.m-hero-g{grid-template-columns:minmax(0,1fr)}}
+
+.story{position:relative;overflow:hidden}
+.story blockquote{margin:0;font:600 clamp(22px,2.6vw,32px)/1.4 var(--display);max-width:30em;text-wrap:balance}
+.story .mk{display:block;font:800 120px/0.6 var(--display);color:var(--accent);height:56px;opacity:.9}
+
+.step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(--border)}
+.step.flip .st-t{order:2}
+.snum{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--brand);color:var(--on-brand);font:700 18px/1 var(--sans)}
+.caps{list-style:none;margin:18px 0 0;padding:0}
+.caps li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 0;border-bottom:1px dashed var(--border-strong);font-size:16px;line-height:22px}
+.svis{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:360px;padding:32px 24px 0;border-radius:28px;background:var(--surface-300);border:1px solid var(--border);overflow:hidden}
+.svis::before{content:"";position:absolute;left:50%;bottom:0;width:min(80%,420px);height:92%;transform:translateX(-50%);border-radius:999px 999px 0 0;background:var(--brand-soft)}
+.svis > *{position:relative}
+.svis .phone{margin-bottom:-70px}
+.svis.fr{align-items:center;padding:28px}
+.svis.fr::before{display:none}
+.svis.dg{align-items:center;padding:28px;min-height:300px}
+.svis.dg::before{display:none}
+@media (max-width:900px){.step{grid-template-columns:minmax(0,1fr)}.step.flip .st-t{order:0}}
+
+.dgm{display:flex;align-items:center;gap:14px;width:100%;flex-wrap:wrap;justify-content:center}
+.dcol{display:flex;flex-direction:column;gap:10px;flex:1 1 150px}
+.dn{padding:13px 16px;border:1.5px solid var(--border-strong);border-radius:14px;background:var(--surface-200);font:600 15px/22px var(--sans)}
+.dn small{display:block;font:400 13px/18px var(--sans);color:var(--ink-muted)}
+.dn.hot{border-color:var(--brand);background:var(--brand-soft)}
+.dn.ai{border-color:var(--intelligence);background:var(--intelligence-soft);box-shadow:var(--shadow-ai)}
+.darr{flex:none;color:var(--ink-muted);animation:nudge 2.2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(5px)}}
+
+.worth{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.fcard{background:var(--surface-200);border:1.5px solid var(--border-strong);border-radius:24px;padding:28px;position:relative}
+.fcard .lvl{position:absolute;top:-18px;left:24px;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 6px;border-radius:9999px;background:var(--brand);color:var(--on-brand);font:700 14px/1 var(--sans)}
+.fcard .lvl b{width:26px;height:26px;border-radius:50%;background:var(--on-brand);color:var(--brand);display:grid;place-items:center;font-size:13px}
+.fcard code{display:block;margin-top:10px;font:600 clamp(17px,1.8vw,21px)/1.55 var(--display);color:var(--ink)}
+.fcard .op{color:var(--accent);padding:0 4px}
+.fcard .sl{display:inline-flex;align-items:center;padding:0 10px;margin-top:20px;min-height:44px;border:1.5px dashed var(--brand);border-radius:12px;color:var(--brand);font:600 16px/1 var(--sans)}
+.disc{display:flex;gap:10px;align-items:flex-start;margin-top:18px;padding:12px 14px;border-radius:12px;background:var(--insight-soft);font:600 14px/20px var(--sans)}
+@media (max-width:900px){.worth{grid-template-columns:minmax(0,1fr)}}
+
+.faces{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:44px}
+.face{position:relative;padding:20px 18px;border-radius:20px;background:var(--surface-200);border:1.5px solid var(--border);opacity:.62;transition:opacity .4s,transform .4s var(--ease)}
+.face h3{margin:0;font:700 18px/26px var(--display)}
+.face p{margin:6px 0 0;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.face i{display:block;width:38px;height:6px;border-radius:6px;margin-bottom:12px}
+.face.on{opacity:1;transform:translateY(-8px);background:var(--fs);border-color:var(--fc);box-shadow:0 0 0 4px color-mix(in srgb,var(--fc) 18%,transparent)}
+.face.on::after{content:"Fed by this module";position:absolute;left:18px;bottom:-15px;padding:0 10px;height:28px;display:inline-flex;align-items:center;border-radius:9999px;background:var(--fc);color:var(--surface-100);font:700 12px/1 var(--sans);letter-spacing:.04em;animation:rise .6s var(--ease) both}
+.face.on i{animation:pulse 2.4s ease-in-out infinite}
+@media (max-width:1080px){.faces{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.faces{grid-template-columns:minmax(0,1fr)}}
+
+.soon-card{display:flex;gap:18px;align-items:flex-start;padding:22px;border:2px dashed var(--ink-muted);border-radius:20px;background:transparent}
+.wire{flex:none;width:96px;display:flex;flex-direction:column;gap:7px;padding:10px;border:1.5px dashed var(--ink-muted);border-radius:12px}
+.wire i{display:block;height:8px;border-radius:4px;border:1.5px dashed var(--ink-muted)}
+.wire i:nth-child(2){width:70%}
+.wire i:nth-child(3){width:45%}
+.cta-b{text-align:center}
+
+
+body{margin:0}
+.hd{position:relative;background:var(--header-bg);-webkit-backdrop-filter:saturate(1.5) blur(16px);backdrop-filter:saturate(1.5) blur(16px);border-bottom:1px solid var(--border);font-family:var(--sans);color:var(--ink)}
+.hd-in{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px);height:72px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);flex:none}
+.brand .bn{font:700 22px/1 var(--display);letter-spacing:-.01em}
+.brand img{flex:none;transition:transform .6s var(--ease)}
+.brand:hover img{transform:rotate(-8deg) scale(1.05)}
+.nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nl{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:10px;color:var(--ink);text-decoration:none;font:600 16px/1 var(--sans);transition:background-color .2s}
+.nl:hover{background:var(--brand-soft)}
+.nl::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nl.on::after,.nl:hover::after{transform:scaleX(1)}
+.has-dd{position:relative}
+.dd{position:absolute;top:100%;left:-8px;width:340px;padding:10px;margin-top:6px;background:var(--surface-200);border:1px solid var(--border);border-radius:16px;box-shadow:0 24px 48px -20px rgba(11,22,42,.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s}
+.has-dd:hover .dd,.has-dd:focus-within .dd{opacity:1;visibility:visible;transform:none}
+.dd a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;min-height:44px;border-radius:10px;text-decoration:none;color:var(--ink);transition:background-color .15s}
+.dd a:hover{background:var(--brand-soft)}
+.dd b{font:600 16px/22px var(--sans)}
+.dd b i{font:600 14px/1 var(--display);font-style:normal;color:var(--ink-muted);margin-left:8px}
+.dd span{font-size:14px;line-height:20px;color:var(--ink-muted)}
+.hd-r{display:flex;align-items:center;gap:10px}
+.icon-btn{width:44px;height:44px;display:inline-grid;place-items:center;border-radius:12px;border:1.5px solid var(--border-strong);background:transparent;color:var(--ink);cursor:pointer;transition:background-color .2s}
+.icon-btn:hover{background:var(--brand-soft)}
+.burger{display:none}
+.drawer{border-top:1px solid var(--border);background:var(--surface-100);padding:12px clamp(16px,4vw,32px) 24px;display:flex;flex-direction:column;gap:2px;animation:rise .35s var(--ease) both}
+.drawer a.dl{display:flex;align-items:center;min-height:48px;padding:0 4px;color:var(--ink);text-decoration:none;font:600 18px/1 var(--sans);border-bottom:1px solid var(--border)}
+.drawer .sub{padding-left:16px;font-weight:500;font-size:16px;color:var(--ink-muted)}
+@media (max-width:980px){.nav{display:none}.burger{display:inline-grid}.hd-r{margin-left:auto}.hd-cta{display:none}}
+
+
+body{margin:0}
+.ft{position:relative;overflow:hidden;background:var(--band);color:var(--band-ink);font-family:var(--sans)}
+.ft a{color:var(--band-ink);text-decoration:none}
+.ft-in{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px clamp(16px,4vw,32px) 28px}
+.ft-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:48px}
+.ft h4{margin:0 0 14px;font:700 13px/20px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--band-brand)}
+.ft ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ft li a{display:inline-flex;align-items:center;min-height:36px;color:var(--band-muted);transition:color .2s,transform .2s var(--ease)}
+.ft li a:hover{color:#fff;transform:translateX(3px)}
+.ft-brand{display:flex;align-items:center;gap:12px}
+.ft-brand b{font:700 24px/1 var(--display)}
+.ft-tag{margin:16px 0 0;font:600 18px/28px var(--display);color:var(--band-ink)}
+.ft-note{margin:12px 0 0;max-width:34ch;color:var(--band-muted);font-size:15px;line-height:22px}
+.ft-legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--band-line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;color:var(--band-muted);font-size:14px;line-height:22px}
+.ft-mark{position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);font:800 clamp(120px,22vw,300px)/1 var(--display);color:transparent;-webkit-text-stroke:1.5px rgba(162,187,205,.13);white-space:nowrap;pointer-events:none;user-select:none}
+.consent{position:fixed;left:16px;bottom:16px;z-index:90;max-width:400px;padding:20px;border-radius:20px;background:var(--surface-200);color:var(--ink);border:1px solid var(--border-strong);box-shadow:0 24px 48px -16px rgba(11,22,42,.45);font-family:var(--sans);animation:rise .6s var(--ease) both}
+.consent h5{margin:0 0 6px;font:700 17px/24px var(--display)}
+.consent p{margin:0;color:var(--ink-muted);font-size:14px;line-height:21px}
+.consent .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.mbar{display:none}
+@media (max-width:900px){.ft-top{grid-template-columns:repeat(2,minmax(0,1fr))}.ft-brandcol{grid-column:1 / -1}}
+@media (max-width:760px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--header-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--border)}
+  .mbar .btn{width:100%}
+  .ft-in{padding-bottom:96px}
+  .consent{bottom:76px;left:12px;right:12px;max-width:none}
+}
+@media (max-width:520px){.ft-top{grid-template-columns:minmax(0,1fr)}}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="page">
+  <div class="stick">
+
+<div style="position:relative">
+<header class="hd">
+  <div class="hd-in">
+    <a class="brand" href="index.html" aria-label="Gurukulam, home">
+      <img src="assets/img/logo.png" width="44" height="44" alt="" style="border-radius:50%;display:block">
+
+      <span class="bn">Gurukulam</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <div class="has-dd">
+        <a class="nl on" href="admissions.html" aria-haspopup="true">Product
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <div class="dd">
+          <a href="admissions.html"><b>Admissions<i>प्रवेश</i></b><span>Every enquiry gets a follow-up, and you can see it.</span></a>
+          <a href="fees.html"><b>Fees</b><span>Parents pay from their phone. Your office stops chasing.</span></a>
+          <a href="transport.html"><b>Transport</b><span>Parents see the bus. Children are accounted for.</span></a>
+          <a href="learning.html"><b>Learning &amp; teaching<i>अभ्यास</i></b><span>Early warnings tell the class teacher who needs help.</span></a>
+          <a href="parents.html"><b>Parents &amp; feedback<i>सेतु</i></b><span>Parents hear from you weekly. You hear from them monthly.</span></a>
+        </div>
+      </div>
+      <a class="nl " href="how-it-works.html">How it works</a>
+      <a class="nl " href="security.html">Security</a>
+      <a class="nl " href="pricing.html">Pricing</a>
+      <a class="nl " href="about.html">About</a>
+    </nav>
+    <div class="hd-r">
+      <button class="icon-btn" type="button" aria-label="Switch between light and dark mode" data-on-click="toggleTheme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm hd-cta" href="book.html">Book a walkthrough
+        <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="icon-btn burger" type="button" aria-label="Menu" aria-expanded="true" data-on-click="toggleMenu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  
+    <div class="drawer" id="drawer" hidden>
+      <a class="dl" href="admissions.html">Product</a>
+      <a class="dl sub" href="admissions.html">Admissions</a>
+      <a class="dl sub" href="fees.html">Fees</a>
+      <a class="dl sub" href="transport.html">Transport</a>
+      <a class="dl sub" href="learning.html">Learning &amp; teaching</a>
+      <a class="dl sub" href="parents.html">Parents &amp; feedback</a>
+      <a class="dl" href="how-it-works.html">How it works</a>
+      <a class="dl" href="security.html">Security</a>
+      <a class="dl" href="pricing.html">Pricing</a>
+      <a class="dl" href="about.html">About</a>
+      <a class="btn btn-primary" style="margin-top:16px" href="book.html">Book a 30-minute walkthrough</a>
+    </div>
+  
+</header>
+</div>
+</div>
+
+  <section class="m-hero" aria-labelledby="mh">
+    <div class="blob" style="width:480px;height:480px;left:-140px;top:-120px;background:var(--blob-a);opacity:.8"></div>
+    <div class="blob" style="width:380px;height:380px;right:-100px;top:100px;background:var(--blob-b);animation-duration:30s;animation-delay:-8s"></div>
+    <div class="kolam" style="position:absolute;inset:0;opacity:.45;-webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 10%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 45%,#000 10%,transparent 72%)" aria-hidden="true"></div>
+    <div class="wrap m-hero-g">
+      <div>
+        <nav class="crumb up" aria-label="Breadcrumb"><a href="index.html">Gurukulam</a><span aria-hidden="true">/</span><span>Product</span></nav>
+        <h1 class="mh-name up" style="--d:1" id="mh">Learning &amp; teaching</h1>
+        <div class="mh-dev up" style="--d:1">Abhyas · अभ्यास   Bodh · बोध</div>
+        <p class="lead up" style="--d:2;font-size:20px;line-height:30px;color:var(--ink)">Early warnings tell the class teacher who needs help this week.</p>
+        <div class="mh-cta up" style="--d:3">
+          <a class="btn btn-primary" href="book.html">Book a 30-minute walkthrough
+            <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="tlink" href="pricing.html"><span>See what it costs</span></a>
+        </div>
+      </div>
+      <div class="m-vis up" style="--d:2">
+        <div class="shot">
+          <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="" style="--h:auto"><img src="assets/img/early-warning-intervention-list.webp" width="2358" height="1270" alt="Early-warning intervention list: students flagged, the rule that fired and a suggested remedy."></div>
+          </div>
+          <div class="phone" style="--pw:168px"><img src="assets/img/teacher-homework-set.webp" width="1170" height="2532" alt="Teacher screen for setting homework from the item bank, posted to the diary."></div>
+        </div>
+        <div class="cap">Early-warning list and teacher homework screen. Illustrative data.<span class="chip live">Live</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-100);--wave:var(--surface-300)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <section class="sec story" style="background:var(--surface-300)" aria-labelledby="story-h">
+    <div class="wrap">
+      <span class="eyebrow rv" id="story-h">The problem, on an ordinary day</span>
+      <div class="rv" style="margin-top:28px"><span class="mk" aria-hidden="true">“</span><blockquote>Her marks started falling in August. The first anyone notices is the October exam, and by then it is a conversation about a result instead of a child.</blockquote></div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-300);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <section class="sec" aria-labelledby="how-h" style="padding-bottom:24px">
+    <div class="wrap">
+      <div class="rv" style="max-width:720px">
+        <span class="eyebrow">How it works</span>
+        <h2 class="h2" id="how-h">The daily work teachers already do becomes the early warning.</h2>
+      </div>
+      <div style="margin-top:40px">
+        
+          <article class="step">
+            <div class="st-t rv">
+              <span class="snum" aria-hidden="true">1</span>
+              <h3 class="h3" style="margin-top:16px;font-size:26px;line-height:34px">Timetable, attendance and cover, done in two taps</h3>
+              <p class="lead" style="margin-top:10px">Attendance is taken once. When a teacher calls in sick at 7:30, the system proposes covers by 7:35 and shows any conflict.</p>
+              <ul class="caps">
+                
+                  <li><span>Timetable, attendance, substitutions</span><span class="chip live">Live</span></li>
+                
+              </ul>
+            </div>
+            <div class="rv" style="--o:6%">
+              
+              
+                <div class="svis fr"><div class="frame" style="width:100%"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="crop" style="--h:380px"><img src="assets/img/substitutions.webp" width="2880" height="2600" loading="lazy" alt="Pending substitutions with candidate teachers and the reason for any conflict."></div></div></div>
+                <div class="cap">Substitutions. Illustrative data.</div>
+              
+              
+              
+              
+            </div>
+          </article>
+        
+          <article class="step flip">
+            <div class="st-t rv">
+              <span class="snum" aria-hidden="true">2</span>
+              <h3 class="h3" style="margin-top:16px;font-size:26px;line-height:34px">Practice, recaps and lesson plans</h3>
+              <p class="lead" style="margin-top:10px">Daily practice (Abhyas) and recaps (Bodh) for children, ICARE lesson plans for teachers, and homework posted once to the parent’s diary.</p>
+              <ul class="caps">
+                
+                  <li><span>Daily practice (Abhyas) and recaps (Bodh)</span><span class="chip live">Live</span></li>
+                
+                  <li><span>ICARE lesson plans</span><span class="chip live">Live</span></li>
+                
+              </ul>
+            </div>
+            <div class="rv" style="--o:6%">
+              
+                <div class="svis"><div class="phone" style="--pw:230px"><img src="assets/img/teacher-homework-set.webp" width="1170" height="2532" loading="lazy" alt="Teacher screen for setting homework from the item bank, posted to the diary."></div></div>
+                <div class="cap">Teacher homework screen. Illustrative data.</div>
+              
+              
+              
+              
+              
+            </div>
+          </article>
+        
+          <article class="step">
+            <div class="st-t rv">
+              <span class="snum" aria-hidden="true">3</span>
+              <h3 class="h3" style="margin-top:16px;font-size:26px;line-height:34px">Rules you can read, with the reason shown</h3>
+              <p class="lead" style="margin-top:10px">Attendance drop, repeated concept miss, failing subject, confidence above mastery. Each flag names its rule, so a teacher can disagree.</p>
+              <ul class="caps">
+                
+                  <li><span>Early-warning rules with the reason shown</span><span class="chip live">Live</span></li>
+                
+              </ul>
+            </div>
+            <div class="rv" style="--o:6%">
+              
+              
+                <div class="svis fr"><div class="frame" style="width:100%"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="" style="--h:auto"><img src="assets/img/early-warning-intervention-list.webp" width="2358" height="1270" loading="lazy" alt="Early-warning intervention list showing the rule that fired for each student."></div></div></div>
+                <div class="cap">Intervention list. Illustrative data.</div>
+              
+              
+              
+              
+            </div>
+          </article>
+        
+          <article class="step flip">
+            <div class="st-t rv">
+              <span class="snum" aria-hidden="true">4</span>
+              <h3 class="h3" style="margin-top:16px;font-size:26px;line-height:34px">Exams, marks and report cards</h3>
+              <p class="lead" style="margin-top:10px">Marks entered once, report cards published to parents without a second pass.</p>
+              <ul class="caps">
+                
+                  <li><span>Exams, marks and report cards</span><span class="chip live">Live</span></li>
+                
+              </ul>
+            </div>
+            <div class="rv" style="--o:6%">
+              
+                <div class="svis"><div class="phone" style="--pw:230px"><img src="assets/img/parent-report-card.webp" width="1170" height="2532" loading="lazy" alt="Parent screen listing published report cards."></div></div>
+                <div class="cap">Parent report card screen. Illustrative data.</div>
+              
+              
+              
+              
+              
+            </div>
+          </article>
+        
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-100);--wave:var(--surface-300)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <section class="sec" style="background:var(--surface-300)" aria-labelledby="worth-h">
+    <div class="wrap worth">
+      <div class="rv">
+        <span class="eyebrow">What it is worth</span>
+        <h2 class="h2" id="worth-h">Hours back for the people who plan the school.</h2>
+        <p class="lead">When timetables, cover and reports come from one record, management and staff stop re-keying the same facts.</p>
+        <p style="margin:24px 0 0"><a class="btn btn-primary" href="pricing.html#calculator">Open the calculator
+          <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+      <div class="fcard rv" style="--o:6%">
+        <span class="lvl"><b>D</b>Management and staff time</span>
+        <code>hours saved per week × cost per hour</code>
+        <span class="sl">₹ your number</span>
+        <div class="disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;color:var(--insight)"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>Hours saved per week is a guess only you can make.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-300);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <section class="sec" aria-labelledby="feeds-h">
+    <div class="wrap">
+      <div class="rv" style="max-width:760px">
+        <span class="eyebrow">What it feeds on the morning screen</span>
+        <h2 class="h2" id="feeds-h">Learning and teaching feeds the Learning and Wellbeing faces.</h2>
+        <p class="lead">Every module ends in one number on the morning screen. This is the thread that holds the school together.</p>
+      </div>
+      <div class="faces">
+        
+          <div class="face on" style="--fc:var(--face-learning);--fs:var(--face-learning-soft)"><i style="background:var(--face-learning)"></i><h3>Learning</h3><p>Syllabus pace</p></div>
+        
+          <div class="face on" style="--fc:var(--face-wellbeing);--fs:var(--face-wellbeing-soft)"><i style="background:var(--face-wellbeing)"></i><h3>Wellbeing</h3><p>Attendance, practice and family feedback alerts</p></div>
+        
+          <div class="face" style="--fc:var(--face-ops);--fs:var(--face-ops-soft)"><i style="background:var(--face-ops)"></i><h3>Operations</h3><p>Buses on time and periods needing cover</p></div>
+        
+          <div class="face" style="--fc:var(--face-fin);--fs:var(--face-fin-soft)"><i style="background:var(--face-fin)"></i><h3>Finance</h3><p>Collected percentage and overdue</p></div>
+        
+          <div class="face" style="--fc:var(--face-growth);--fs:var(--face-growth-soft)"><i style="background:var(--face-growth)"></i><h3>Growth</h3><p>Enquiries waiting for a follow-up</p></div>
+        
+      </div>
+      <p class="cap" style="margin-top:36px"><span class="chip soon">Designed view</span><span>The morning screen is a designed view, assembled from live modules.</span></p>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--surface-300);padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(48px,6vw,80px)" aria-labelledby="next-h">
+    <div class="wrap">
+      <div class="rv" style="max-width:720px">
+        <span class="eyebrow">Coming next</span>
+        <h2 class="h2" id="next-h">Ready at go-live, or it comes off this page.</h2>
+      </div>
+      <div class="g2" style="margin-top:32px;align-items:stretch">
+        
+          <div class="soon-card rv"><div class="wire" aria-hidden="true"><i></i><i></i><i></i></div><div><b class="h4" style="display:block;margin-bottom:6px">Class-pace view</b><span class="chip soon">Coming</span><p class="small muted" style="margin:10px 0 0">Ready at go-live. We show no date until it has an owner and a delivery date.</p></div></div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="sec on-band cta-b" aria-labelledby="cta-h">
+    <div class="kolam on-band" style="position:absolute;inset:0;opacity:.7;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000,transparent 75%)" aria-hidden="true"></div>
+    <div class="wrap rv" style="max-width:760px">
+      <span class="eyebrow">Start with one term</span>
+      <h2 class="h2" id="cta-h">See Learning &amp; teaching on your own numbers.</h2>
+      <p class="lead">We send five questions beforehand, so the calculator is filled with your numbers when we meet.</p>
+      <p style="margin:28px 0 0"><a class="btn btn-accent" style="min-height:56px;font-size:17px" href="book.html">Book a 30-minute walkthrough</a></p>
+    </div>
+  </section>
+
+  
+
+<footer class="ft on-band">
+  <div class="wave top" style="--wave:var(--band);display:none" aria-hidden="true"></div>
+  <div class="ft-in">
+    <div class="ft-top">
+      <div class="ft-brandcol">
+        <div class="ft-brand">
+          <img src="assets/img/logo.png" width="52" height="52" alt="" style="border-radius:50%;display:block">
+          <b>Gurukulam</b>
+        </div>
+        <p class="ft-tag">School excellence. Every dimension.</p>
+        <p class="ft-note">The operating system for your school: one platform for school management, teaching and parent communication. Built for private K-12 schools in India.</p>
+        <p style="margin:20px 0 0"><a class="btn btn-accent btn-sm" href="book.html">Book a 30-minute walkthrough</a></p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="fees.html">Fees</a></li>
+          <li><a href="transport.html">Transport</a></li>
+          <li><a href="learning.html">Learning &amp; teaching</a></li>
+          <li><a href="parents.html">Parents &amp; feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Help &amp; handbook</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="security.html#contact">Data-protection contact</a></li>
+        </ul>
+        <p style="margin:14px 0 0;font-size:14px;line-height:22px;color:var(--band-muted)">Write to <a href="mailto:privacy@gurukulam.ai" style="color:var(--band-ink)">privacy@gurukulam.ai</a></p>
+      </div>
+    </div>
+    <div class="ft-legal">
+      <span>© 2026 Gurukulam, Bengaluru</span>
+      <span>Made for Indian schools. ₹, lakh and crore, the way you count.</span>
+    </div>
+  </div>
+  <div class="ft-mark" aria-hidden="true">गुरुकुलम्</div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn-primary" href="book.html">Book a 30-minute walkthrough</a>
+</div>
+
+</div>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>
