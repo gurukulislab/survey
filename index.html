@@ -1,286 +1,1206 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Gurukulam: School excellence. Every dimension.</title>
+<meta name="description" content="A research-backed operating system that helps your school see clearly, act earlier and improve continuously. Admissions, fees, transport, teaching and parents in one record.">
+<meta property="og:title" content="Gurukulam: School excellence. Every dimension.">
+<meta property="og:description" content="A research-backed operating system that helps your school see clearly, act earlier and improve continuously. Admissions, fees, transport, teaching and parents in one record.">
+<meta name="theme-color" content="#0b162a">
+<script>
+/* scroll-in is on only when scripting works and motion is allowed; if site.js never reports ready, show everything */
+(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('js');setTimeout(function(){if(!window.__rvReady)d.classList.remove('js')},3000)})();
+</script>
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel:wght@400;600;700;800&family=Mukta:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+
+body{margin:0}
+.stick{position:sticky;top:0;z-index:60}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,84px) 0 clamp(80px,9vw,132px)}
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,4vw,64px);align-items:center}
+.hero-h{font-size:clamp(32px,4.1vw,52px);margin:22px 0 0}
+.hero-h .hl{display:block;position:relative;width:fit-content}
+.ul{position:absolute;left:0;bottom:-8px;width:100%;height:14px;overflow:visible}
+.ul path{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s .95s var(--ease) forwards}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:32px}
+.qual{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:15px;line-height:22px;color:var(--ink-muted)}
+.qual i{width:8px;height:8px;border-radius:50%;background:var(--haldi-400);flex:none}
+.hero-vis{position:relative;padding:0 24px 40px 0}
+.hero-vis .cap{padding-right:190px}
+@media (max-width:900px){.hero-g{grid-template-columns:minmax(0,1fr)}.hero-vis{padding-right:0}.hero-vis .cap{padding-right:140px}.ring{display:none}}
+.ring{position:absolute;right:-70px;top:-60px;width:360px;height:360px;border-radius:50%;border:2px dashed var(--ispat-300);opacity:.7}
+.ring.b{right:auto;left:-60px;top:auto;bottom:-90px;width:220px;height:220px;opacity:.5}
+
+/* leaks */
+.leak{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px 20px 20px;background:var(--surface-200);border:1px solid var(--border);border-radius:20px;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.leak:hover{transform:translateY(-8px);box-shadow:var(--shadow-card);border-color:var(--brand)}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand)}
+.leak .t{font:700 19px/26px var(--display);margin:0}
+.leak p{margin:0;color:var(--ink-muted);font-size:15px;line-height:22px}
+.unit{margin-top:auto;padding-top:12px;border-top:1px dashed var(--border-strong);font:600 14px/20px var(--sans);color:var(--ink)}
+.slot{display:inline-flex;align-items:center;margin-top:8px;min-height:44px;padding:0 12px;border:1.5px dashed var(--brand);border-radius:10px;color:var(--brand);text-decoration:none;font:600 14px/1 var(--sans);gap:6px;transition:background-color .2s}
+.slot:hover{background:var(--brand-soft)}
+.flowline{display:block;margin:56px auto 0;width:2px;height:72px;background:var(--border-strong);position:relative;overflow:hidden}
+.flowline i{position:absolute;left:-2px;top:0;width:6px;height:18px;border-radius:6px;background:var(--accent);animation:dropdown 2.6s var(--ease) infinite}
+@keyframes dropdown{0%{transform:translateY(-20px)}100%{transform:translateY(76px)}}
+.ask{font:700 clamp(24px,3vw,36px)/1.25 var(--display);text-align:center;max-width:22em;margin:28px auto 0;text-wrap:balance}
+
+/* three layers */
+.stackd{display:flex;flex-direction:column}
+.ly{position:relative;border-radius:22px;padding:22px 24px;border:1px solid var(--border)}
+.ly .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ly .nm{display:flex;align-items:center;gap:12px;font:700 20px/28px var(--display)}
+.ly .nm b{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--sans);background:var(--ink);color:var(--surface-100)}
+.ly p{margin:10px 0 0;font-size:16px;line-height:24px}
+.ly1{background:var(--surface-200)}
+.ly2{background:var(--intelligence-soft);border-color:transparent;box-shadow:var(--shadow-ai)}
+.ly2 .nm b{background:var(--intelligence);color:var(--surface-100)}
+.ly3{background:var(--brand);color:var(--on-brand);border-color:transparent}
+.ly3 .nm b{background:var(--on-brand);color:var(--brand)}
+.ly3 .chip.soon{color:var(--on-brand);border-color:var(--on-brand)}
+.insight-tag{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 9px;border-radius:9999px;border:1.5px solid var(--intelligence);color:var(--intelligence);font:700 12px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase}
+.pill{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:9999px;border:1px solid var(--border-strong);background:var(--surface-100);font:600 14px/1 var(--sans)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ly3 .pill{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:var(--on-brand)}
+.rise{position:relative;height:64px;display:flex;justify-content:center;overflow:hidden}
+.rise::before{content:"";position:absolute;top:14px;bottom:0;width:2px;background:var(--border-strong);opacity:.55}
+.rise svg{position:absolute;top:2px;color:var(--border-strong)}
+.rise i{position:absolute;bottom:0;width:8px;height:8px;border-radius:50%;background:var(--intelligence);animation:flowup 2.4s ease-in infinite}
+.rise i:nth-child(3){animation-delay:.8s}
+.rise i:nth-child(4){animation-delay:1.6s}
+.promise{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.promise div{display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid var(--border);border-radius:14px;background:var(--surface-200);transition:transform .3s var(--ease)}
+.promise div:hover{transform:translateX(6px)}
+.promise small{flex:none;width:92px;font:700 12px/16px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.promise b{font:700 17px/24px var(--display)}
+
+/* roles */
+.tabs{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:min(560px,100%);margin:36px auto 0;padding:6px;border-radius:9999px;background:var(--surface-100);border:1px solid var(--border)}
+.ind{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px) / 3);border-radius:9999px;background:var(--brand);transition:transform .5s var(--ease)}
+.tab{position:relative;z-index:1;min-height:48px;border:0;background:transparent;color:var(--ink);font:600 16px/1 var(--sans);border-radius:9999px;cursor:pointer;transition:color .3s}
+.tab.on{color:var(--on-brand)}
+.panel{display:none;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center;margin-top:48px}
+.panel.on{display:grid;animation:rise .6s var(--ease) both}
+.bul{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+.bul li{display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:26px}
+.bul li svg{flex:none;margin-top:4px;color:var(--success)}
+.bul .chip{margin-left:8px}
+.vis{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:18px;padding:36px 28px 0;min-height:420px;overflow:hidden;border-radius:28px;background:var(--surface-100);border:1px solid var(--border)}
+.vis::before{content:"";position:absolute;left:50%;bottom:0;width:min(86%,520px);height:90%;transform:translateX(-50%);border-radius:999px 999px 0 0;background:var(--brand-soft)}
+.vis > *{position:relative}
+.vis .phone{margin-bottom:-60px}
+.vis .phone + .phone{margin-bottom:-110px}
+@media (max-width:900px){.panel{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.tabs{display:none}.panel{display:grid;margin-top:40px;padding:24px;border:1px solid var(--border);border-radius:24px;background:var(--surface-200)}}
+
+/* pillars */
+.band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(44px,5vw,72px) 0;border-top:1px solid var(--border)}
+.band.flip .bt{order:2}
+.num{font:800 76px/1 var(--display);color:transparent;-webkit-text-stroke:1.5px var(--border-strong);opacity:.8}
+.pname{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-top:6px}
+.pname .dv{font:600 20px/1 var(--display);color:var(--ink-muted)}
+.promise-l{font:600 20px/30px var(--sans);margin:12px 0 0;max-width:38ch;text-wrap:pretty}
+.caps{list-style:none;margin:22px 0 18px;padding:0}
+.caps li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 0;border-bottom:1px dashed var(--border-strong);font-size:16px;line-height:22px}
+@media (max-width:900px){.band{grid-template-columns:minmax(0,1fr)}.band.flip .bt{order:0}}
+
+/* loop */
+.loop{position:relative;padding-top:34px}
+.track{position:absolute;top:11px;left:0;right:0;height:2px;background:var(--border-strong);opacity:.5}
+.runner{position:absolute;top:4px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--accent);animation:flowright 9s linear infinite}
+.lcard{position:relative;background:var(--surface-200);border:1px solid var(--border);border-radius:20px;padding:26px 22px 22px;transition:transform .35s var(--ease),box-shadow .35s}
+.lcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-card)}
+.lcard .node{position:absolute;top:-31px;left:22px;width:20px;height:20px;border-radius:50%;border:4px solid var(--surface-100);box-sizing:content-box;margin-left:-4px}
+.lcard .v{font:700 28px/1.1 var(--display);margin:0 0 10px}
+.lcard p{margin:0 0 14px;font-size:16px;line-height:24px;color:var(--ink-muted)}
+.lcard .chips{display:flex;flex-wrap:wrap;gap:8px}
+.c-det .node{background:var(--intelligence)} .c-det .v{color:var(--intelligence)}
+.c-dia .node{background:var(--insight)} .c-dia .v{color:var(--insight)}
+.c-act .node{background:var(--brand)} .c-act .v{color:var(--brand)}
+.c-ver .node{background:var(--success)} .c-ver .v{color:var(--success)}
+@media (max-width:1080px){.track,.runner{display:none}.loop{padding-top:0}.lcard .node{display:none}}
+
+/* trust */
+.tr-item{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink);transition:transform .3s var(--ease)}
+.tr-item:hover{transform:translateX(6px)}
+.tr-item span.t{font:600 17px/24px var(--sans)}
+.shield{position:relative;display:grid;place-items:center;min-height:380px}
+.shield svg.s{position:relative;z-index:2;width:min(300px,70%);height:auto}
+.shield .sh{fill:var(--surface-200);stroke:var(--brand);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2s .2s var(--ease) forwards}
+.shield .ck{fill:none;stroke:var(--success);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1s 1.6s var(--ease) forwards}
+.shield .orb{position:absolute;inset:6% 12%;border-radius:50%;border:2px dashed var(--ispat-300);opacity:.75}
+@media (max-width:640px){.tr-item{grid-template-columns:48px minmax(0,1fr)}.tr-item .chip{grid-column:2;justify-self:start}}
+
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;padding-top:56px;margin-top:56px}
+.tl-line{position:absolute;top:15px;left:16px;right:16px;height:3px;background:var(--border);border-radius:3px;overflow:hidden}
+.tl-fill{height:100%;background:var(--brand);transform-origin:left}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@supports (animation-timeline: view()){.tl-fill{animation:grow linear both;animation-timeline:view();animation-range:entry 30% cover 52%}}
+.st{position:relative}
+.st .dot{position:absolute;top:-56px;left:0;width:32px;height:32px;border-radius:50%;background:var(--surface-100);border:3px solid var(--brand);display:grid;place-items:center;font:700 14px/1 var(--sans);color:var(--brand)}
+.st h3{margin:0 0 6px;font:700 19px/26px var(--display)}
+.st p{margin:0 0 10px;font-size:15px;line-height:22px;color:var(--ink-muted)}
+@media (max-width:900px){.tl{grid-template-columns:minmax(0,1fr);padding-top:0;padding-left:52px;gap:28px}.tl-line{top:0;bottom:0;left:15px;right:auto;width:3px;height:auto}.st .dot{top:0;left:-52px}}
+
+/* team */
+.tphoto{aspect-ratio:1 / 1.08;border:2px dashed var(--border-strong);border-radius:999px 999px 20px 20px;display:grid;place-items:center;text-align:center;padding:16px;color:var(--ink-muted);font:600 14px/20px var(--sans);background:var(--surface-100)}
+.tcard{display:flex;flex-direction:column;gap:10px}
+.tcard .nm{font:700 20px/28px var(--display)}
+.how{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border:1px solid var(--border);border-radius:16px;background:var(--surface-200);font-size:16px;line-height:24px}
+
+/* pilot */
+.pcard{background:rgba(255,255,255,.06);border:1px solid var(--band-line);border-radius:22px;padding:28px 26px;transition:transform .35s var(--ease),background-color .35s}
+.pcard:hover{transform:translateY(-6px);background:rgba(255,255,255,.1)}
+.pcard h3{margin:0 0 10px;font:700 21px/28px var(--display);color:var(--band-ink)}
+.pcard p{margin:0;color:var(--band-muted);font-size:16px;line-height:25px}
+.ctab{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;margin-top:48px;align-items:center}
+.bin{display:flex;align-items:center;min-height:48px;border:1.5px solid var(--band-muted);border-radius:12px;padding:0 14px;background:rgba(255,255,255,.06);flex:1 1 220px}
+.bin input{flex:1;min-width:0;border:0;background:transparent;color:var(--band-ink);font:500 16px/24px var(--sans);height:44px;outline:none}
+.bin input::placeholder{color:var(--band-muted)}
+.bin:focus-within{border-color:var(--akash-400)}
+@media (max-width:900px){.ctab{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.ul path,.shield .sh,.shield .ck{stroke-dashoffset:0}}
+
+
+body{margin:0}
+.hd{position:relative;background:var(--header-bg);-webkit-backdrop-filter:saturate(1.5) blur(16px);backdrop-filter:saturate(1.5) blur(16px);border-bottom:1px solid var(--border);font-family:var(--sans);color:var(--ink)}
+.hd-in{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px);height:72px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);flex:none}
+.brand .bn{font:700 22px/1 var(--display);letter-spacing:-.01em}
+.brand img{flex:none;transition:transform .6s var(--ease)}
+.brand:hover img{transform:rotate(-8deg) scale(1.05)}
+.nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nl{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:10px;color:var(--ink);text-decoration:none;font:600 16px/1 var(--sans);transition:background-color .2s}
+.nl:hover{background:var(--brand-soft)}
+.nl::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nl.on::after,.nl:hover::after{transform:scaleX(1)}
+.has-dd{position:relative}
+.dd{position:absolute;top:100%;left:-8px;width:340px;padding:10px;margin-top:6px;background:var(--surface-200);border:1px solid var(--border);border-radius:16px;box-shadow:0 24px 48px -20px rgba(11,22,42,.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s}
+.has-dd:hover .dd,.has-dd:focus-within .dd{opacity:1;visibility:visible;transform:none}
+.dd a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;min-height:44px;border-radius:10px;text-decoration:none;color:var(--ink);transition:background-color .15s}
+.dd a:hover{background:var(--brand-soft)}
+.dd b{font:600 16px/22px var(--sans)}
+.dd b i{font:600 14px/1 var(--display);font-style:normal;color:var(--ink-muted);margin-left:8px}
+.dd span{font-size:14px;line-height:20px;color:var(--ink-muted)}
+.hd-r{display:flex;align-items:center;gap:10px}
+.icon-btn{width:44px;height:44px;display:inline-grid;place-items:center;border-radius:12px;border:1.5px solid var(--border-strong);background:transparent;color:var(--ink);cursor:pointer;transition:background-color .2s}
+.icon-btn:hover{background:var(--brand-soft)}
+.burger{display:none}
+.drawer{border-top:1px solid var(--border);background:var(--surface-100);padding:12px clamp(16px,4vw,32px) 24px;display:flex;flex-direction:column;gap:2px;animation:rise .35s var(--ease) both}
+.drawer a.dl{display:flex;align-items:center;min-height:48px;padding:0 4px;color:var(--ink);text-decoration:none;font:600 18px/1 var(--sans);border-bottom:1px solid var(--border)}
+.drawer .sub{padding-left:16px;font-weight:500;font-size:16px;color:var(--ink-muted)}
+@media (max-width:980px){.nav{display:none}.burger{display:inline-grid}.hd-r{margin-left:auto}.hd-cta{display:none}}
+
+
+body{margin:0}
+.calc{background:var(--surface-200);color:var(--ink);border:1px solid var(--border);border-radius:28px;font-family:var(--sans);overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.5)}
+.calc-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:18px 28px;background:var(--surface-300);border-bottom:1px solid var(--border)}
+.calc-bar p{margin:0;flex:1 1 280px;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.calc-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);}
+.inputs{padding:28px;display:flex;flex-direction:column;gap:20px;border-right:1px solid var(--border)}
+.grp{border:1.5px solid var(--border);border-radius:18px;padding:18px 18px 20px;transition:border-color .3s,background-color .3s,box-shadow .3s}
+.grp.hl{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 4px rgba(232,134,26,.18)}
+.grp-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.grp-h b{font:700 17px/24px var(--display)}
+.lv{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--on-brand);font:700 13px/1 var(--sans)}
+.flds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fld label{display:flex;flex-wrap:wrap;gap:2px 8px;align-items:center;font:600 14px/20px var(--sans);margin-bottom:6px}
+.asm{font:600 12px/16px var(--sans);color:var(--insight);background:var(--insight-soft);border-radius:9999px;padding:1px 8px}
+.inp{display:flex;align-items:center;min-height:48px;border:1.5px solid var(--border-strong);border-radius:12px;background:var(--surface-100);padding:0 12px;gap:6px;transition:border-color .2s,box-shadow .2s}
+.inp:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px rgba(27,58,115,.18)}
+.inp i{font-style:normal;color:var(--ink-muted);font-size:14px;white-space:nowrap}
+.inp input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:600 17px/24px var(--sans);height:44px;outline:none}
+.inp input::placeholder{color:var(--ink-muted);opacity:.55;font-weight:400}
+.results{padding:28px;display:flex;flex-direction:column;gap:12px;background:var(--surface-200)}
+.warn{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--insight-soft);font:600 14px/20px var(--sans);color:var(--ink)}
+.line{border:1.5px solid var(--border);border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:4px 12px;align-items:start;transition:border-color .3s,background-color .3s}
+.line.hl{border-color:var(--accent);background:var(--accent-soft)}
+.line .nm{font:600 16px/22px var(--sans)}
+.line .fm{grid-column:2;font-size:13px;line-height:18px;color:var(--ink-muted)}
+.line .ar{grid-column:2;font:500 13px/18px ui-monospace,Menlo,Consolas,monospace;color:var(--intelligence)}
+.line .am{grid-row:1;grid-column:3;font:700 20px/26px var(--display);text-align:right;white-space:nowrap}
+.tot{border-radius:20px;background:var(--brand);color:var(--on-brand);padding:20px 22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tot small{display:block;font:600 13px/18px var(--sans);opacity:.85}
+.tot b{display:block;margin-top:4px;font:800 clamp(24px,2.6vw,32px)/1.15 var(--display)}
+.anchor{padding:14px 16px;border-radius:14px;background:var(--accent-soft);border:1.5px solid var(--accent);font:600 15px/22px var(--sans);color:var(--ink)}
+.anchor b{font-family:var(--display)}
+.mail{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+.mail .inp{flex:1 1 200px}
+.fine{margin:0;font-size:13px;line-height:19px;color:var(--ink-muted)}
+.ok{display:flex;gap:10px;align-items:center;padding:14px 16px;border-radius:14px;background:var(--success-soft);font:600 15px/22px var(--sans);color:var(--ink)}
+@media (max-width:980px){.calc-grid{grid-template-columns:minmax(0,1fr)}.inputs{border-right:0;border-bottom:1px solid var(--border)}}
+@media (max-width:560px){.flds{grid-template-columns:minmax(0,1fr)}.tot{grid-template-columns:minmax(0,1fr)}.inputs,.results{padding:18px}.line{grid-template-columns:30px minmax(0,1fr)}.line .am{grid-column:2;grid-row:auto;text-align:left}}
+
+
+body{margin:0}
+.ft{position:relative;overflow:hidden;background:var(--band);color:var(--band-ink);font-family:var(--sans)}
+.ft a{color:var(--band-ink);text-decoration:none}
+.ft-in{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px clamp(16px,4vw,32px) 28px}
+.ft-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:48px}
+.ft h4{margin:0 0 14px;font:700 13px/20px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--band-brand)}
+.ft ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ft li a{display:inline-flex;align-items:center;min-height:36px;color:var(--band-muted);transition:color .2s,transform .2s var(--ease)}
+.ft li a:hover{color:#fff;transform:translateX(3px)}
+.ft-brand{display:flex;align-items:center;gap:12px}
+.ft-brand b{font:700 24px/1 var(--display)}
+.ft-tag{margin:16px 0 0;font:600 18px/28px var(--display);color:var(--band-ink)}
+.ft-note{margin:12px 0 0;max-width:34ch;color:var(--band-muted);font-size:15px;line-height:22px}
+.ft-legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--band-line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;color:var(--band-muted);font-size:14px;line-height:22px}
+.ft-mark{position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);font:800 clamp(120px,22vw,300px)/1 var(--display);color:transparent;-webkit-text-stroke:1.5px rgba(162,187,205,.13);white-space:nowrap;pointer-events:none;user-select:none}
+.consent{position:fixed;left:16px;bottom:16px;z-index:90;max-width:400px;padding:20px;border-radius:20px;background:var(--surface-200);color:var(--ink);border:1px solid var(--border-strong);box-shadow:0 24px 48px -16px rgba(11,22,42,.45);font-family:var(--sans);animation:rise .6s var(--ease) both}
+.consent h5{margin:0 0 6px;font:700 17px/24px var(--display)}
+.consent p{margin:0;color:var(--ink-muted);font-size:14px;line-height:21px}
+.consent .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.mbar{display:none}
+@media (max-width:900px){.ft-top{grid-template-columns:repeat(2,minmax(0,1fr))}.ft-brandcol{grid-column:1 / -1}}
+@media (max-width:760px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--header-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--border)}
+  .mbar .btn{width:100%}
+  .ft-in{padding-bottom:96px}
+  .consent{bottom:76px;left:12px;right:12px;max-width:none}
+}
+@media (max-width:520px){.ft-top{grid-template-columns:minmax(0,1fr)}}
+
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Smooch+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    html, body { margin: 0; padding: 0; background: #05070f; }
-    * { box-sizing: border-box; }
-    @keyframes gkPulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
-    @keyframes gkFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    ::selection { background: rgba(86,207,254,.28); }
-    ::placeholder { color: rgba(180,196,224,.45); }
-  </style>
-</helmet>
-<div ref="{{ bindRoot }}" style="position: relative; min-height: 100vh; width: 100%; overflow: hidden; background:
-    radial-gradient(70% 55% at 50% 40%, rgba(16,30,58,.85), transparent 70%),
-    radial-gradient(120% 90% at 20% 6%, rgba(86,207,254,.09), transparent 55%),
-    radial-gradient(120% 90% at 82% 94%, rgba(181,124,246,.10), transparent 55%),
-    #05070f;
-    font-family: 'Space Grotesk', system-ui, sans-serif;">
 
-  <!-- subtle neural 'brain-cell pulse' ambience -->
-  <canvas ref="{{ bindCanvas }}" id="gk-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0;"></canvas>
 
-  <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(75% 60% at 50% 44%, transparent 42%, rgba(5,7,15,.5) 100%);"></div>
 
-  <div style="position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: clamp(34px, 5vh, 110px); padding: 40px 24px 30px; text-align: center;">
+<div class="page">
+  <div class="stick">
 
-    <!-- top: coming soon pill -->
-    <div ref="{{ bindPill }}" style="display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(126,158,214,.24); background: rgba(20,28,52,.4); backdrop-filter: blur(8px); opacity: 0; transition: opacity .9s ease;">
-      <span style="width: 7px; height: 7px; border-radius: 999px; background: #56cffe; box-shadow: 0 0 12px 2px rgba(86,207,254,.9); animation: gkPulse 2.4s ease-in-out infinite;"></span>
-      <span style="font-size: 11.5px; letter-spacing: .34em; text-transform: uppercase; color: #b7c4dc;">Coming Soon</span>
-    </div>
+<div style="position:relative">
+<header class="hd">
+  <div class="hd-in">
+    <a class="brand" href="index.html" aria-label="Gurukulam, home">
+      <img src="assets/img/logo.png" width="44" height="44" alt="" style="border-radius:50%;display:block">
 
-    <!-- center: hero video + wordmark + tagline + capture -->
-    <div ref="{{ bindReveal }}" style="display: flex; flex-direction: column; align-items: center; max-width: 760px; margin: 0; gap: 2px; opacity: 0; transition: opacity .9s ease;">
-
-      <!-- hero video, edges feathered into the page -->
-      <div style="position: relative; width: clamp(300px, 58vw, 600px);">
-        <div style="position: absolute; inset: 6% 8%; z-index: 0; border-radius: 50%; background: radial-gradient(closest-side, rgba(86,207,254,.16), rgba(181,124,246,.10) 55%, transparent 78%); filter: blur(26px);"></div>
-        <video ref="{{ bindVideo }}" muted loop autoplay playsinline preload="auto" aria-label="Gurukulam.ai" style="position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 26%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0) 78%), linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%); -webkit-mask-composite: source-in; mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 26%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0) 78%), linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%); mask-composite: intersect;">
-          <source src="https://gurukulislab.github.io/survey/Hero2.mp4" type="video/mp4" />
-        </video>
+      <span class="bn">Gurukulam</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <div class="has-dd">
+        <a class="nl " href="admissions.html" aria-haspopup="true">Product
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <div class="dd">
+          <a href="admissions.html"><b>Admissions<i>प्रवेश</i></b><span>Every enquiry gets a follow-up, and you can see it.</span></a>
+          <a href="fees.html"><b>Fees</b><span>Parents pay from their phone. Your office stops chasing.</span></a>
+          <a href="transport.html"><b>Transport</b><span>Parents see the bus. Children are accounted for.</span></a>
+          <a href="learning.html"><b>Learning &amp; teaching<i>अभ्यास</i></b><span>Early warnings tell the class teacher who needs help.</span></a>
+          <a href="parents.html"><b>Parents &amp; feedback<i>सेतु</i></b><span>Parents hear from you weekly. You hear from them monthly.</span></a>
+        </div>
       </div>
-
-      <h1 style="margin: 8px 0 0; font-family: 'Smooch Sans', sans-serif; font-weight: 600; letter-spacing: .01em; color: #f1f4fb; font-size: clamp(52px, 10vw, 96px); line-height: .95;">Gurukulam<span style="color: #56cffe;">.</span><span style="background: linear-gradient(96deg,#56cffe,#b57cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">ai</span></h1>
-
-      <p style="margin: 22px 0 0; color: #8b99b6; font-size: clamp(13px, 2.2vw, 16px); line-height: 1.7; white-space: nowrap;">Innovation-driven educational research — building AI rooted in Indian ethos.</p>
-
-    </div>
-
-    <!-- footer: contact -->
-    <div ref="{{ bindFooter }}" style="display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 0; padding-top: 4px; opacity: 0; transition: opacity .9s ease;">
-      <a href="/cdn-cgi/l/email-protection#abc3cec7c7c4ebccded9dec0dec7cac685cac2" style="color: #93a2c0; text-decoration: none; font-size: 13.5px; letter-spacing: .04em; border-bottom: 1px solid rgba(147,162,192,.28); padding-bottom: 2px;" style-hover="color: #cfe6ff; border-color: rgba(207,230,255,.6);"><span class="__cf_email__" data-cfemail="fa929f969695ba9d8f888f918f969b97d49b93">info@gurukulam.ai</span></a>
-      <span style="color: #4d5975; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; margin-top: 8px;">© 2026 Gurukulam.ai</span>
+      <a class="nl " href="how-it-works.html">How it works</a>
+      <a class="nl " href="security.html">Security</a>
+      <a class="nl " href="pricing.html">Pricing</a>
+      <a class="nl " href="about.html">About</a>
+    </nav>
+    <div class="hd-r">
+      <button class="icon-btn" type="button" aria-label="Switch between light and dark mode" data-on-click="toggleTheme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm hd-cta" href="book.html">Book a walkthrough
+        <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="icon-btn burger" type="button" aria-label="Menu" aria-expanded="true" data-on-click="toggleMenu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
+  
+    <div class="drawer" id="drawer" hidden>
+      <a class="dl" href="admissions.html">Product</a>
+      <a class="dl sub" href="admissions.html">Admissions</a>
+      <a class="dl sub" href="fees.html">Fees</a>
+      <a class="dl sub" href="transport.html">Transport</a>
+      <a class="dl sub" href="learning.html">Learning &amp; teaching</a>
+      <a class="dl sub" href="parents.html">Parents &amp; feedback</a>
+      <a class="dl" href="how-it-works.html">How it works</a>
+      <a class="dl" href="security.html">Security</a>
+      <a class="dl" href="pricing.html">Pricing</a>
+      <a class="dl" href="about.html">About</a>
+      <a class="btn btn-primary" style="margin-top:16px" href="book.html">Book a 30-minute walkthrough</a>
+    </div>
+  
+</header>
 </div>
-</x-dc>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Cyan → Violet&quot;,&quot;Saffron → Gold&quot;,&quot;Emerald → Teal&quot;],&quot;default&quot;:&quot;Saffron → Gold&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ambience&quot;},&quot;ambience&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:5,&quot;default&quot;:75,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ambience&quot;,&quot;unit&quot;:&quot;%&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Calm&quot;,&quot;Lively&quot;],&quot;default&quot;:&quot;Lively&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ambience&quot;}}">
-class Component extends DCLogic {
-  state = { email: "", submitted: false };
+</div>
 
-  palettes() {
-    return {
-      "Cyan → Violet":  { a: "#56cffe", b: "#b57cf6" },
-      "Saffron → Gold": { a: "#ffb257", b: "#ffd76a" },
-      "Emerald → Teal": { a: "#5fe0b0", b: "#4fb8d8" },
-    };
-  }
-  activePalette() { return this.palettes()[this.props.accent] || this.palettes()["Cyan → Violet"]; }
-  hexToRgb(h) { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
-  mix(A, B, t) { return [Math.round(A[0]+(B[0]-A[0])*t), Math.round(A[1]+(B[1]-A[1])*t), Math.round(A[2]+(B[2]-A[2])*t)]; }
+  <!-- 3.1 Hero -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="blob" style="width:540px;height:540px;left:-160px;top:-140px;background:var(--blob-a);opacity:.85"></div>
+    <div class="blob" style="width:440px;height:440px;right:-140px;top:140px;background:var(--blob-b);animation-duration:31s;animation-delay:-9s"></div>
+    <div class="blob" style="width:300px;height:300px;left:40%;bottom:-130px;background:var(--blob-c);animation-duration:27s;animation-delay:-15s"></div>
+    <div class="kolam" style="position:absolute;inset:0;opacity:.55;-webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 10%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 45%,#000 10%,transparent 72%)" aria-hidden="true"></div>
+    <div class="wrap hero-g">
+      <div>
+        <span class="eyebrow up" style="--d:0">Research translated into everyday practice</span>
+        <h1 class="h1 hero-h" id="hero-h">
+          <span class="hl up" style="--d:1">School excellence.</span>
+          <span class="hl up" style="--d:2">Every dimension.
+            <svg class="ul" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 9 C 60 2, 110 14, 160 7 S 260 3, 298 8"/></svg>
+          </span>
+        </h1>
+        <p class="lead up" style="--d:4">A research-backed operating system that helps your school see clearly, act earlier and improve continuously.</p>
+        <div class="pills up" style="--d:5"><span class="pill">Learning</span><span class="pill">Operations</span><span class="pill">Parents</span><span class="pill">Growth</span></div>
+        <div class="hero-cta up" style="--d:5">
+          <a class="btn btn-primary" href="book.html">Book a 30-minute walkthrough
+            <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="tlink" href="pricing.html"><span>See what it costs</span></a>
+        </div>
+        <p class="qual up" style="--d:6"><i></i>Built for private K-12 schools in India.</p>
+      </div>
+      <div class="hero-vis up" style="--d:3">
+        <div class="ring rotor" aria-hidden="true"></div>
+        <div class="ring b rotor" aria-hidden="true" style="animation-direction:reverse"></div>
+        <div class="shot">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="assets/img/dashboard-today.webp" width="2880" height="1860" alt="Today at Sunrise Public School: five scorecard faces, class status for 30 sections and a Needs you today list.">
+          </div>
+          <div class="phone" style="--pw:176px"><img src="assets/img/parent-home.webp" width="1170" height="2532" alt="Parent home screen showing what needs attention, new diary entries and what is coming up."></div>
+        </div>
+        <div class="cap"><span class="chip soon">Designed view</span><span>Designed view, assembled from live modules. Illustrative data.</span></div>
+      </div>
+    </div>
+  </section>
 
-  bindRoot = (el) => { this.rootEl = el; };
-  bindCanvas = (el) => { this.canvasEl = el; };
-  bindVideo = (el) => { this.videoEl = el; };
-  bindPill = (el) => { this.pillEl = el; };
-  bindReveal = (el) => { this.revealEl = el; };
-  bindFooter = (el) => { this.footerEl = el; };
+  <div class="wave" style="background:var(--surface-100);--wave:var(--surface-300)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
 
-  _reveal = () => {
-    if (this._revealed) return;
-    this._revealed = true;
-    [this.pillEl, this.revealEl, this.footerEl].forEach((el) => { if (el) el.style.opacity = "1"; });
-  };
+  <!-- 3.2 The five leaks -->
+  <section class="sec" style="background:var(--surface-300)" aria-labelledby="leaks-h">
+    <div class="wrap">
+      <div class="center rv" style="max-width:820px">
+        <span class="eyebrow">The hidden cost of fragmentation</span>
+        <h2 class="h2" id="leaks-h">But you hear about it late, by phone and in pieces.</h2>
+        <p class="lead">A school runs on hundreds of small things done well.</p>
+      </div>
+      <div class="g5" style="margin-top:56px">
+        <article class="leak rv" style="--o:0%" data-on-mouseenter="hA" data-on-mouseleave="hOff">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M17 8l5 5M22 8l-5 5"/></svg></div>
+          <h3 class="t">Enquiries go cold</h3>
+          <p>Fifty families walked in on Saturday. By Thursday, nobody has called half of them.</p>
+          <div class="unit">Every lost admission is one year's fee × years of enrolment.
+            <a class="slot" href="#calculator" data-on-focus="hA" data-on-blur="hOff"><span>₹ your number</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </article>
+        <article class="leak rv" style="--o:4%" data-on-mouseenter="hB" data-on-mouseleave="hOff">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></div>
+          <h3 class="t">Fees chased by phone</h3>
+          <p>The office makes forty calls before lunch, mostly to parents who would have paid anyway.</p>
+          <div class="unit">Cash waiting in arrears, plus office hours.
+            <a class="slot" href="#calculator" data-on-focus="hB" data-on-blur="hOff"><span>₹ your number</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </article>
+        <article class="leak rv" style="--o:8%" data-on-mouseenter="hC" data-on-mouseleave="hOff">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M3 11h18M7 17v3M17 17v3"/><circle cx="7.5" cy="14" r=".8"/><circle cx="16.5" cy="14" r=".8"/></svg></div>
+          <h3 class="t">Buses run on habit</h3>
+          <p>The same routes as three years ago, with a few empty seats on every one.</p>
+          <div class="unit">Fuel, vehicles, empty seats.
+            <a class="slot" href="#calculator" data-on-focus="hC" data-on-blur="hOff"><span>₹ your number</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </article>
+        <article class="leak rv" style="--o:12%" data-on-mouseenter="hD" data-on-mouseleave="hOff">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4Z"/><path d="M12 8.5v3M12 13.5h.01"/></svg></div>
+          <h3 class="t">Parent surprises</h3>
+          <p>The first you hear of a missed bus or an unmarked class is a parent at your door.</p>
+          <div class="unit">Time and trust.
+            <a class="slot" href="#calculator" data-on-focus="hD" data-on-blur="hOff"><span>₹ your number</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </article>
+        <article class="leak rv" style="--o:16%">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8M21 11v6h-6"/></svg></div>
+          <h3 class="t">A child who slips quietly</h3>
+          <p>Her marks started falling in August. You see it in the October exam.</p>
+          <div class="unit">Found in the exam, not in October.
+            <a class="slot" href="#calculator"><span>₹ your number</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
+        </article>
+      </div>
+      <span class="flowline" aria-hidden="true"><i></i></span>
+      <p class="ask rv">How do you see the whole school without chasing anyone?</p>
+    </div>
+  </section>
 
-  componentDidMount() {
-    this.raf = 0;
-    // --- video: force autoplay + persist loop position ---
-    const v = this.videoEl;
-    if (v) {
-      v.muted = true;
-      v.loop = true;
-      try { const s = parseFloat(localStorage.getItem("gk_hero_video_t") || "0"); if (s > 0 && s < (v.duration || 9.8) - 0.3) v.currentTime = s; } catch (e) {}
-      const p = v.play(); if (p && p.catch) p.catch(() => {});
-      this._lastSave = 0;
-      v.addEventListener("timeupdate", this._onTime);
-      // reveal content only once the video is fully ready to play through
-      this._onReady = () => this._reveal();
-      v.addEventListener("canplaythrough", this._onReady);
-      v.addEventListener("loadeddata", () => { if (v.readyState >= 4) this._reveal(); });
-      if (v.readyState >= 4) this._reveal();
-      // safety net so content is never permanently hidden
-      this._revealTimer = setTimeout(this._reveal, 6000);
-      // keep it looping even if the loop attribute is dropped by the browser
-      v.addEventListener("ended", () => { v.currentTime = 0; const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); });
-    }
-    // --- ambient neural background ---
-    this._setup();
-    this._onResize = () => this._size();
-    window.addEventListener("resize", this._onResize);
-  }
-  componentWillUnmount() {
-    cancelAnimationFrame(this.raf);
-    clearTimeout(this._revealTimer);
-    window.removeEventListener("resize", this._onResize);
-    if (this.videoEl) {
-      this.videoEl.removeEventListener("timeupdate", this._onTime);
-      if (this._onReady) this.videoEl.removeEventListener("canplaythrough", this._onReady);
-    }
-  }
+  <div class="wave" style="background:var(--surface-300);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
 
-  _onTime = () => {
-    const v = this.videoEl; if (!v) return;
-    const now = performance.now();
-    if (now - this._lastSave > 500) { this._lastSave = now; try { localStorage.setItem("gk_hero_video_t", String(v.currentTime)); } catch (e) {} }
-  };
+  <!-- 3.3 Three layers -->
+  <section class="sec" aria-labelledby="layers-h">
+    <div class="wrap g2" style="align-items:center">
+      <div class="rv">
+        <span class="eyebrow">The architecture</span>
+        <h2 class="h2" id="layers-h">From school activity to meaningful action.</h2>
+        <p class="lead">One record, entered once by the person already doing the work. An intelligence layer that shows its reasoning. A short list for today, instead of a pile of reports.</p>
+        <div class="promise">
+          <div><small>Management</small><b>Easy monitoring. Earlier action.</b></div>
+          <div><small>Teachers</small><b>Less admin, more teaching</b></div>
+          <div><small>Parents</small><b>Always in the loop</b></div>
+        </div>
+        <p style="margin:24px 0 0"><a class="tlink" href="how-it-works.html"><span>See how it works</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+      <div class="stackd" role="group" aria-label="Three layers, rising from the record to a short list">
+        <div class="ly ly3 rv">
+          <div class="top"><div class="nm"><b>3</b>Guide the next action</div><span class="chip soon">Designed view</span></div>
+          <p>For the principal, for each teacher, for each parent. Six things that need you today, not forty reports.</p>
+        </div>
+        <div class="rise" aria-hidden="true"><svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 9 3l7 9"/></svg><i></i><i></i><i></i></div>
+        <div class="ly ly2 rv" style="--o:5%">
+          <div class="top"><div class="nm"><b>2</b>Find what matters</div><span class="chip live">Live</span></div>
+          <p>Detect, rank and suggest. The rules are shown, with the reason. Not a black box.</p>
+          <div class="pills"><span class="insight-tag">Insight</span><span class="pill">Detect</span><span class="pill">Rank</span><span class="pill">Suggest</span></div>
+        </div>
+        <div class="rise" aria-hidden="true"><svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 9 3l7 9"/></svg><i></i><i></i><i></i></div>
+        <div class="ly ly1 rv" style="--o:10%">
+          <div class="top"><div class="nm"><b>1</b>Connect the school</div><span class="chip live">Live</span></div>
+          <p>Entered once, by the person already doing the work.</p>
+          <div class="pills"><span class="pill">Admissions</span><span class="pill">Fees</span><span class="pill">Transport</span><span class="pill">Attendance</span><span class="pill">Learning</span><span class="pill">Parents</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  _setup() {
-    const c = this.canvasEl || document.getElementById("gk-canvas");
-    if (!c) return;
-    this.ctx = c.getContext("2d");
-    this._size();
-    if (!this._running) { this._running = true; this.t0 = performance.now(); this._last = this.t0; this._nextSpawn = 0; this._loop(); }
-  }
+  <div class="wave" style="background:var(--surface-100);--wave:var(--surface-300)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
 
-  _size() {
-    const c = this.canvasEl || document.getElementById("gk-canvas");
-    if (!c) return;
-    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const w = c.clientWidth || window.innerWidth, h = c.clientHeight || window.innerHeight;
-    c.width = Math.round(w * this.dpr); c.height = Math.round(h * this.dpr);
-    this.W = c.width; this.H = c.height;
-    this._buildNodes();
-  }
+  <!-- 3.4 Role switcher -->
+  <section class="sec" id="roles" style="background:var(--surface-300)" aria-labelledby="roles-h">
+    <div class="wrap">
+      <div class="center rv" style="max-width:760px">
+        <span class="eyebrow">The three promises</span>
+        <h2 class="h2" id="roles-h">One operating system. Three everyday promises.</h2>
+      </div>
+      <div class="tabs rv" role="tablist" aria-label="Choose a role">
+        <span class="ind" style="transform:translateX(0%)" aria-hidden="true"></span>
+        <button class="tab on" type="button" role="tab" id="management" aria-selected="true" data-on-click="goM">Management</button>
+        <button class="tab" type="button" role="tab" id="teachers" aria-selected="false" data-on-click="goT">Teachers</button>
+        <button class="tab" type="button" role="tab" id="parents" aria-selected="false" data-on-click="goP">Parents</button>
+      </div>
 
-  _buildNodes() {
-    const W = this.W, H = this.H, dpr = this.dpr;
-    const n = Math.max(18, Math.min(34, Math.round((W * H) / (78000 * dpr * dpr))));
-    this.nodes = [];
-    for (let i = 0; i < n; i++) {
-      this.nodes.push({
-        x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.14 * dpr,
-        vy: (Math.random() - 0.5) * 0.14 * dpr,
-        r: (Math.random() * 1.4 + 1.1) * dpr,
-        phase: Math.random() * Math.PI * 2,
-        t: Math.min(1, Math.max(0, (Math.random()))),
-      });
-    }
-    this.linkDist = Math.min(W, H) * 0.24;
-    this.signals = [];
-  }
+      <div class="panel on" role="tabpanel" aria-labelledby="management">
+        <div>
+          <h3 class="h3" style="font-size:28px;line-height:36px">Easy monitoring, so nothing reaches you as a surprise.</h3>
+          <ul class="bul">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Five faces, Learning, Wellbeing, Operations, Finance and Growth, each with a target and a trend.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>A signed PDF for trustee meetings.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>The six things that need you today.<span class="chip soon">Designed view</span></span></li>
+          </ul>
+          <p style="margin:24px 0 0"><a class="tlink" href="how-it-works.html"><span>How management sees the school</span></a></p>
+        </div>
+        <div class="vis">
+          <div style="width:100%;max-width:640px">
+            <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="crop" style="--h:360px"><img src="assets/img/scorecard-full.webp" width="2880" height="4600" loading="lazy" alt="School health scorecard with five faces, Learning, Wellbeing, Operations, Finance and Growth, each with a target and a trend."></div>
+            </div>
+            <div class="cap" style="padding-bottom:20px">School health scorecard. Illustrative data.</div>
+          </div>
+        </div>
+      </div>
 
-  _spawnSignal() {
-    const N = this.nodes; if (!N || N.length < 2) return;
-    const D = this.linkDist;
-    // pick a random node that has a neighbour within link distance
-    for (let tries = 0; tries < 8; tries++) {
-      const a = (Math.random() * N.length) | 0;
-      const cand = [];
-      for (let j = 0; j < N.length; j++) {
-        if (j === a) continue;
-        const dx = N[a].x - N[j].x, dy = N[a].y - N[j].y;
-        if (dx * dx + dy * dy < D * D) cand.push(j);
-      }
-      if (cand.length) {
-        const b = cand[(Math.random() * cand.length) | 0];
-        this.signals.push({ from: a, to: b, t: 0, speed: 0.5 + Math.random() * 0.5 });
-        return;
-      }
-    }
-  }
+      <div class="panel" role="tabpanel" aria-labelledby="teachers">
+        <div>
+          <h3 class="h3" style="font-size:28px;line-height:36px">Less admin. More teaching. Feedback you can act on.</h3>
+          <ul class="bul">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Attendance in two taps.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Diary and homework posted once, delivered to parents.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>A 7:30 sick call becomes a 7:35 cover.<span class="chip live">Live</span></span></li>
+          </ul>
+          <p style="margin:24px 0 0"><a class="tlink" href="learning.html"><span>See learning and teaching</span></a></p>
+        </div>
+        <div class="vis">
+          <div class="phone" style="--pw:200px"><img src="assets/img/teacher-roll-call.webp" width="1170" height="2532" loading="lazy" alt="Teacher roll call for a class of 36 students with three marked absent and a Save roll call button."></div>
+          <div style="width:min(100%,400px);align-self:center;margin-bottom:24px">
+            <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="crop" style="--h:260px"><img src="assets/img/substitutions.webp" width="2880" height="2600" loading="lazy" alt="Pending substitutions with candidate teachers and the reason for any conflict."></div>
+            </div>
+            <div class="cap">Roll call and substitutions. Illustrative data.</div>
+          </div>
+        </div>
+      </div>
 
-  _loop = () => {
-    const ctx = this.ctx; if (!ctx) return;
-    const now = performance.now();
-    const dt = Math.min(0.05, (now - this._last) / 1000); this._last = now;
-    const t = (now - this.t0) / 1000;
-    const W = this.W, H = this.H;
-    ctx.clearRect(0, 0, W, H);
+      <div class="panel" role="tabpanel" aria-labelledby="parents">
+        <div>
+          <h3 class="h3" style="font-size:28px;line-height:36px">Always in the loop.</h3>
+          <ul class="bul">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Their child's week: diary, homework and what needs attention.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>The bus, with its ETA and stop timeline.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Fees paid from the phone.<span class="chip live">Live</span></span></li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span>Notices with read receipts.<span class="chip live">Live</span></span></li>
+          </ul>
+          <p style="margin:24px 0 0"><a class="tlink" href="parents.html"><span>See the parent app</span></a></p>
+        </div>
+        <div class="vis">
+          <div class="phone" style="--pw:200px"><img src="assets/img/parent-home.webp" width="1170" height="2532" loading="lazy" alt="Parent home screen showing what needs attention, new diary entries and what is coming up."></div>
+          <div class="phone" style="--pw:200px"><img src="assets/img/parent-live-bus.webp" width="1170" height="2532" loading="lazy" alt="Live bus status with estimated arrival, driver and a timeline of stops."></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const pal = this.activePalette();
-    const A = this.hexToRgb(pal.a), B = this.hexToRgb(pal.b);
-    const intensity = (this.props.ambience != null ? this.props.ambience : 50) / 100;
-    const spd = (this.props.motion === "Lively") ? 1.7 : 1;
+  <div class="wave" style="background:var(--surface-300);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
 
-    const N = this.nodes;
-    // drift
-    for (let i = 0; i < N.length; i++) {
-      const p = N[i];
-      p.x += p.vx * spd; p.y += p.vy * spd;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
-    }
+  <!-- 3.5 Five pillars -->
+  <section class="sec" aria-labelledby="pillars-h" style="padding-bottom:40px">
+    <div class="wrap">
+      <div class="rv" style="max-width:760px">
+        <span class="eyebrow">What it runs</span>
+        <h2 class="h2" id="pillars-h">Five things a school runs on. All in one record.</h2>
+        <p class="lead">Fill the seats. Collect the fees. Know your school.</p>
+      </div>
+      <div style="margin-top:48px">
+        
+          <article class="band">
+            <div class="bt rv">
+              <div class="num" aria-hidden="true">01</div>
+              <div class="pname"><h3 class="h2" style="margin:0">Admissions</h3><span class="dv">Pravesh · प्रवेश</span></div>
+              <p class="promise-l">Every enquiry gets a follow-up, and you can see it.</p>
+              <ul class="caps">
+                
+                  <li><span>Front-desk tablet, website form and walk-in capture</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Pipeline with a stage and an owner</span><span class="chip live">Live</span></li>
+                
+                  <li><span>WhatsApp follow-up</span><span class="chip live">Live</span></li>
+                
+                  <li><span>One click to enrol</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Who-to-call ranking and seats-left forecast</span><span class="chip soon">Coming</span></li>
+                
+              </ul>
+              <a class="tlink" href="admissions.html"><span>See admissions</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="rv" style="--o:6%">
+              <div class="shot">
+                <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="" style="--h:auto"><img src="assets/img/admissions-pipeline.webp" width="3840" height="2160" loading="lazy" alt="Admissions pipeline board showing enquiries across nine stages."></div>
+                </div>
+                
+              </div>
+              <div class="cap">Admissions pipeline. Illustrative data.</div>
+            </div>
+          </article>
+        
+          <article class="band flip">
+            <div class="bt rv">
+              <div class="num" aria-hidden="true">02</div>
+              <div class="pname"><h3 class="h2" style="margin:0">Fees</h3><span class="dv"></span></div>
+              <p class="promise-l">Parents pay from their phone. Your office stops chasing.</p>
+              <ul class="caps">
+                
+                  <li><span>UPI and card payment</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Receipts, sibling discount, late fees</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Eight-week cash-flow forecast</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Arrears triage: who needs a call, who needs only a reminder</span><span class="chip live">Live</span></li>
+                
+                  <li><span>WhatsApp reminders with a pay link</span><span class="chip soon">Coming</span></li>
+                
+              </ul>
+              <a class="tlink" href="fees.html"><span>See fees</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="rv" style="--o:6%">
+              <div class="shot">
+                <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="" style="--h:auto"><img src="assets/img/fees-arrears-call-list.webp" width="2358" height="1650" loading="lazy" alt="Office call list of families with fees overdue, split into who needs a call and who needs only a reminder."></div>
+                </div>
+                <div class="phone"><img src="assets/img/parent-fees.webp" width="1170" height="2532" loading="lazy" alt="Parent fees screen with due fees, Pay buttons and a paid-this-year summary."></div>
+              </div>
+              <div class="cap">Arrears call list. Illustrative data.</div>
+            </div>
+          </article>
+        
+          <article class="band">
+            <div class="bt rv">
+              <div class="num" aria-hidden="true">03</div>
+              <div class="pname"><h3 class="h2" style="margin:0">Transport</h3><span class="dv"></span></div>
+              <p class="promise-l">Parents see the bus. Children are accounted for. Routes get shorter.</p>
+              <ul class="caps">
+                
+                  <li><span>Live tracking and ETA</span><span class="chip live">Live</span></li>
+                
+                  <li><span>QR boarding and alighting</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Missed-boarding alert with SMS fallback</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Route optimiser</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Road-distance routing and auto-generated stops</span><span class="chip soon">Coming</span></li>
+                
+              </ul>
+              <a class="tlink" href="transport.html"><span>See transport</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="rv" style="--o:6%">
+              <div class="shot">
+                <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="crop" style="--h:440px"><img src="assets/img/transport-optimizer-full.webp" width="2880" height="3400" loading="lazy" alt="Route optimiser result with proposed routes drawn on a map."></div>
+                </div>
+                <div class="phone"><img src="assets/img/parent-live-bus.webp" width="1170" height="2532" loading="lazy" alt="Live bus status with estimated arrival, driver and a stop timeline."></div>
+              </div>
+              <div class="cap">Route optimiser. Illustrative data.</div>
+            </div>
+          </article>
+        
+          <article class="band flip">
+            <div class="bt rv">
+              <div class="num" aria-hidden="true">04</div>
+              <div class="pname"><h3 class="h2" style="margin:0">Learning &amp; teaching</h3><span class="dv">Abhyas · अभ्यास  Bodh · बोध</span></div>
+              <p class="promise-l">Early warnings tell the class teacher who needs help this week.</p>
+              <ul class="caps">
+                
+                  <li><span>Timetable, attendance, substitutions</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Daily practice (Abhyas) and recaps (Bodh)</span><span class="chip live">Live</span></li>
+                
+                  <li><span>ICARE lesson plans</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Early-warning rules with the reason shown</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Exams, marks and report cards</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Class-pace view</span><span class="chip soon">Coming</span></li>
+                
+              </ul>
+              <a class="tlink" href="learning.html"><span>See learning and teaching</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="rv" style="--o:6%">
+              <div class="shot">
+                <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="" style="--h:auto"><img src="assets/img/early-warning-intervention-list.webp" width="2358" height="1270" loading="lazy" alt="Early-warning intervention list: students flagged, the rule that fired and a suggested remedy."></div>
+                </div>
+                <div class="phone"><img src="assets/img/teacher-homework-set.webp" width="1170" height="2532" loading="lazy" alt="Teacher screen for setting homework from the item bank, posted to the diary."></div>
+              </div>
+              <div class="cap">Early-warning intervention list. Illustrative data.</div>
+            </div>
+          </article>
+        
+          <article class="band">
+            <div class="bt rv">
+              <div class="num" aria-hidden="true">05</div>
+              <div class="pname"><h3 class="h2" style="margin:0">Parents &amp; feedback</h3><span class="dv">Setu · सेतु  Pratikriya · प्रतिक्रिया</span></div>
+              <p class="promise-l">Parents hear from you every week. Once a month, you hear from them.</p>
+              <ul class="caps">
+                
+                  <li><span>Diary, notices with read receipts, messages, moments, events</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Setu, the WhatsApp line</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Pratikriya: anonymous monthly feedback with trends and escalation</span><span class="chip live">Live</span></li>
+                
+                  <li><span>Reach-and-read analytics</span><span class="chip soon">Coming</span></li>
+                
+              </ul>
+              <a class="tlink" href="parents.html"><span>See parents and feedback</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="rv" style="--o:6%">
+              <div class="shot">
+                <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="crop" style="--h:440px"><img src="assets/img/pratikriya-dashboard.webp" width="2880" height="3440" loading="lazy" alt="Principal's Pratikriya dashboard with a threshold alert, an action log and anonymous family feedback scores."></div>
+                </div>
+                <div class="phone"><img src="assets/img/parent-notices.webp" width="1170" height="2532" loading="lazy" alt="Parent notice list with Ack required and Urgent tags."></div>
+              </div>
+              <div class="cap">Pratikriya dashboard. Illustrative data.</div>
+            </div>
+          </article>
+        
+      </div>
+    </div>
+  </section>
 
-    ctx.globalCompositeOperation = "lighter";
-    const D = this.linkDist;
-    // synapse lines
-    for (let i = 0; i < N.length; i++) {
-      const a = N[i];
-      for (let j = i + 1; j < N.length; j++) {
-        const b = N[j];
-        const dx = a.x - b.x, dy = a.y - b.y; const d2 = dx * dx + dy * dy;
-        if (d2 < D * D) {
-          const d = Math.sqrt(d2);
-          const al = (1 - d / D) * 0.30 * intensity;
-          const c = this.mix(A, B, (a.t + b.t) / 2);
-          ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${al})`;
-          ctx.lineWidth = 1 * this.dpr;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
-    }
-    // cell bodies (slow pulse)
-    for (let i = 0; i < N.length; i++) {
-      const p = N[i];
-      const c = this.mix(A, B, p.t);
-      const pulse = 0.55 + 0.45 * Math.sin(t * 0.9 * spd + p.phase);
-      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.15 * intensity * pulse})`;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.85 * intensity * (0.6 + 0.4 * pulse)})`;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-    }
-    // firing signals travelling along synapses
-    this._nextSpawn -= dt;
-    if (this._nextSpawn <= 0 && this.signals.length < 4) { this._spawnSignal(); this._nextSpawn = 0.7 + Math.random() * 1.6; }
-    for (let i = this.signals.length - 1; i >= 0; i--) {
-      const s = this.signals[i];
-      s.t += s.speed * spd * dt;
-      if (s.t >= 1) { this.signals.splice(i, 1); continue; }
-      const a = N[s.from], b = N[s.to]; if (!a || !b) { this.signals.splice(i, 1); continue; }
-      const x = a.x + (b.x - a.x) * s.t, y = a.y + (b.y - a.y) * s.t;
-      const fade = Math.sin(s.t * Math.PI); // in-out
-      const c = this.mix(A, B, s.t);
-      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.22 * intensity * fade})`;
-      ctx.beginPath(); ctx.arc(x, y, 8 * this.dpr, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = `rgba(${Math.min(255,c[0]+60)},${Math.min(255,c[1]+60)},${Math.min(255,c[2]+60)},${0.9 * intensity * fade})`;
-      ctx.beginPath(); ctx.arc(x, y, 2 * this.dpr, 0, Math.PI * 2); ctx.fill();
-    }
-    ctx.globalCompositeOperation = "source-over";
+  <div class="wave" style="background:var(--surface-100);--wave:var(--band)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
 
-    this.raf = requestAnimationFrame(this._loop);
-  };
+  <!-- 3.6 ROI calculator -->
+  <section class="sec on-band" id="calculator" aria-labelledby="calc-h" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="kolam on-band" style="position:absolute;inset:0;opacity:.5;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 60%);mask-image:linear-gradient(to bottom,#000,transparent 60%)" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="rv" style="max-width:800px">
+        <span class="eyebrow">The ROI calculator</span>
+        <h2 class="h2" id="calc-h">Put in your numbers. See where the return comes from.</h2>
+        <p class="lead">Each line shows its formula and your result.</p>
+      </div>
+      <div style="margin-top:44px" class="rv">
+        
 
-  onEmailChange = (e) => this.setState({ email: e.target.value });
-  onSubmit = (e) => { e.preventDefault(); if (this.state.email && this.state.email.includes("@")) this.setState({ submitted: true }); };
+<section class="calc" aria-label="ROI calculator">
+  <div class="calc-bar">
+    <button class="btn btn-ghost btn-sm" type="button" data-on-click="fillExample">Try an example school</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-on-click="clearAll">Clear</button>
+    <p>Example numbers show how the arithmetic works. Everything is computed on this page, and nothing is sent anywhere until you ask for the sheet.</p>
+  </div>
+  <div class="calc-grid">
+    <div class="inputs">
+      
+        <div class="grp">
+          <div class="grp-h"><span class="lv">A</span><b>More admissions</b></div>
+          <div class="flds">
+            
+              <div class="fld">
+                <label for="f-enq">Enquiries per year</label>
+                <div class="inp"><input id="f-enq" type="text" value="" placeholder="e.g. 400" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-fee">Annual fee per child</label>
+                <div class="inp"><i>₹</i><input id="f-fee" type="text" value="" placeholder="e.g. 60,000" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-years">Average years enrolled</label>
+                <div class="inp"><input id="f-years" type="text" value="" placeholder="e.g. 6" data-on-input="f.onInput" autocomplete="off"><i>yrs</i></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-conv">Extra conversion points<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-conv" type="text" value="1" placeholder="" data-on-input="f.onInput" autocomplete="off"><i>%</i></div>
+              </div>
+            
+          </div>
+        </div>
+      
+        <div class="grp">
+          <div class="grp-h"><span class="lv">B</span><b>Cash released</b></div>
+          <div class="flds">
+            
+              <div class="fld">
+                <label for="f-out">Fees outstanding today</label>
+                <div class="inp"><i>₹</i><input id="f-out" type="text" value="" placeholder="e.g. 25,00,000" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-days">Days collected sooner<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-days" type="text" value="5" placeholder="" data-on-input="f.onInput" autocomplete="off"><i>days</i></div>
+              </div>
+            
+          </div>
+        </div>
+      
+        <div class="grp">
+          <div class="grp-h"><span class="lv">B2</span><b>Office time</b></div>
+          <div class="flds">
+            
+              <div class="fld">
+                <label for="f-calls">Reminder calls avoided per month<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-calls" type="text" value="" placeholder="e.g. 120" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-mins">Minutes per call</label>
+                <div class="inp"><input id="f-mins" type="text" value="" placeholder="e.g. 4" data-on-input="f.onInput" autocomplete="off"><i>min</i></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-staff">Staff cost per hour</label>
+                <div class="inp"><i>₹</i><input id="f-staff" type="text" value="" placeholder="e.g. 150" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+          </div>
+        </div>
+      
+        <div class="grp">
+          <div class="grp-h"><span class="lv">C</span><b>Transport</b></div>
+          <div class="flds">
+            
+              <div class="fld">
+                <label for="f-fuel">Fuel spend per month</label>
+                <div class="inp"><i>₹</i><input id="f-fuel" type="text" value="" placeholder="e.g. 1,80,000" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-kmp">Kilometres saved<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-kmp" type="text" value="" placeholder="e.g. 5" data-on-input="f.onInput" autocomplete="off"><i>%</i></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-veh">Vehicles saved<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-veh" type="text" value="" placeholder="e.g. 1" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-vcost">Annual cost of one vehicle</label>
+                <div class="inp"><i>₹</i><input id="f-vcost" type="text" value="" placeholder="e.g. 6,00,000" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-riders">Riders gained<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-riders" type="text" value="" placeholder="e.g. 8" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-tfee">Annual transport fee</label>
+                <div class="inp"><i>₹</i><input id="f-tfee" type="text" value="" placeholder="e.g. 18,000" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+          </div>
+        </div>
+      
+        <div class="grp">
+          <div class="grp-h"><span class="lv">D</span><b>Management and staff time</b></div>
+          <div class="flds">
+            
+              <div class="fld">
+                <label for="f-hrs">Hours saved per week<span class="asm">Your estimate</span></label>
+                <div class="inp"><input id="f-hrs" type="text" value="" placeholder="e.g. 6" data-on-input="f.onInput" autocomplete="off"><i>hrs</i></div>
+              </div>
+            
+              <div class="fld">
+                <label for="f-hcost">Cost per hour</label>
+                <div class="inp"><i>₹</i><input id="f-hcost" type="text" value="" placeholder="e.g. 600" data-on-input="f.onInput" autocomplete="off"></div>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="results" aria-live="polite">
+      <div class="warn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:1px;color:var(--insight)"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <span>Every number here is yours to change. Set the conversion points and days saved to what you expect for your school.</span>
+      </div>
+      
+        <div class="line">
+          <span class="lv">A</span>
+          <span class="nm">More admissions, per year</span>
+          <span class="am">₹ —</span>
+          <span class="fm">enquiries × extra conversion points × annual fee × years enrolled</span>
+          
+        </div>
+      
+        <div class="line">
+          <span class="lv">B</span>
+          <span class="nm">Cash released, one time</span>
+          <span class="am">₹ —</span>
+          <span class="fm">outstanding fees × days saved ÷ 365</span>
+          
+        </div>
+      
+        <div class="line">
+          <span class="lv">B2</span>
+          <span class="nm">Office time, per year</span>
+          <span class="am">₹ —</span>
+          <span class="fm">calls avoided × minutes per call × staff cost per hour</span>
+          
+        </div>
+      
+        <div class="line">
+          <span class="lv">C</span>
+          <span class="nm">Transport, per year</span>
+          <span class="am">₹ —</span>
+          <span class="fm">monthly fuel × km saved; vehicles saved × annual cost; riders gained × annual transport fee</span>
+          
+        </div>
+      
+        <div class="line">
+          <span class="lv">D</span>
+          <span class="nm">Management and staff time, per year</span>
+          <span class="am">₹ —</span>
+          <span class="fm">hours saved per week × cost per hour</span>
+          
+        </div>
+      
+      <div class="tot">
+        <div><small>Recurring, each year (A + B2 + C + D)</small><b>₹ —</b></div>
+        <div><small>One-time cash released (B)</small><b>₹ —</b></div>
+      </div>
+      <div class="anchor">Enter your enquiries, annual fee and years enrolled to see what one extra family in a hundred enquiries is worth. <b></b></div>
+      
+      
+        <form class="mail" data-on-submit="send">
+          <div class="inp"><input type="email" aria-label="Your email" placeholder="you@school.in" required value="" data-on-input="onEmail"></div>
+          <button class="btn btn-primary" type="submit">Email me this sheet</button>
+        </form>
+        <p class="fine">We use your email only to send this sheet and to reply about a walkthrough. <a href="#">Privacy policy</a></p>
+      
+    </div>
+  </div>
+</section>
 
-  renderVals() {
-    return {
-      bindRoot: this.bindRoot,
-      bindCanvas: this.bindCanvas,
-      bindVideo: this.bindVideo,
-      bindPill: this.bindPill,
-      bindReveal: this.bindReveal,
-      bindFooter: this.bindFooter,
-      email: this.state.email,
-      submitted: this.state.submitted,
-      notSubmitted: !this.state.submitted,
-      onEmailChange: this.onEmailChange,
-      onSubmit: this.onSubmit,
-    };
-  }
-}
-</script>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--band);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <!-- 3.7 Value loop -->
+  <section class="sec" aria-labelledby="loop-h">
+    <div class="wrap">
+      <div class="center rv" style="max-width:760px">
+        <span class="eyebrow">One operating loop</span>
+        <h2 class="h2" id="loop-h">Detect. Diagnose. Act. Verify.</h2>
+        <p class="lead">The plumbing produces intelligence, and the intelligence closes the loop.</p>
+      </div>
+      <div class="loop g4" style="margin-top:56px">
+        <div class="track" aria-hidden="true"><span class="runner"></span></div>
+        <article class="lcard c-det rv"><span class="node"></span>
+          <h3 class="v">Detect</h3>
+          <p>Attendance drop, repeated concept miss, failing subject, confidence above mastery. Four visible rules.</p>
+          <div class="chips"><span class="chip live">Live</span></div>
+        </article>
+        <article class="lcard c-dia rv" style="--o:5%"><span class="node"></span>
+          <h3 class="v">Diagnose</h3>
+          <p>What is behind it, in learning and in behaviour, with the reason shown.</p>
+          <div class="chips"><span class="chip live">Live</span></div>
+        </article>
+        <article class="lcard c-act rv" style="--o:10%"><span class="node"></span>
+          <h3 class="v">Act</h3>
+          <p>A suggested remedy for the teacher, and ten minutes of things to try at home for the parent.</p>
+          <div class="chips"><span class="chip live">Teacher remedy</span><span class="chip soon">At-home steps</span></div>
+        </article>
+        <article class="lcard c-ver rv" style="--o:15%"><span class="node"></span>
+          <h3 class="v">Verify</h3>
+          <p>A re-check date, and proof it worked.</p>
+          <div class="chips"><span class="chip soon">Remedy status tracking</span></div>
+        </article>
+      </div>
+      <div class="g2" style="margin-top:64px">
+        <div class="rv">
+          <div class="shot">
+            <div class="frame"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <img src="assets/img/early-warning-intervention-list.webp" width="2358" height="1270" loading="lazy" alt="Early-warning intervention list: students flagged this week, the rule that fired for each and a suggested remedy.">
+            </div>
+          </div>
+          <div class="cap">Early-warning intervention list. Illustrative data.<span class="chip live">Live</span></div>
+        </div>
+        <div class="rv" style="--o:6%">
+          <h3 class="h3" style="font-size:26px;line-height:34px">Every warning shows the rule that fired, so a teacher can disagree with it.</h3>
+          <div class="pills" style="margin-top:20px"><span class="pill">Attendance drop</span><span class="pill">Repeated concept miss</span><span class="pill">Failing subject</span><span class="pill">Confidence above mastery</span></div>
+          <p class="lead">The data comes free from work teachers already do. Nobody fills a form for the dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-100);--wave:var(--surface-300)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <!-- 3.8 Trust -->
+  <section class="sec" style="background:var(--surface-300)" aria-labelledby="trust-h">
+    <div class="wrap g2">
+      <div class="rv">
+        <span class="eyebrow">Built for India's data-protection law</span>
+        <h2 class="h2" id="trust-h">Safe with children's data, and easy to start.</h2>
+        <div style="margin-top:28px">
+          <a class="tr-item" href="security.html#consent"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><rect x="3" y="4" width="18" height="16" rx="3"/></svg></span><span class="t">Parent consent captured and withdrawable, with a consent dashboard.</span><span class="chip live">Live</span></a>
+          <a class="tr-item" href="security.html#isolation"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></span><span class="t">Each school's data isolated from every other school.</span><span class="chip live">Live</span></a>
+          <a class="tr-item" href="security.html#audit"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="t">Audit trail. Staff impersonation is read-only and logged.</span><span class="chip live">Live</span></a>
+          <a class="tr-item" href="security.html#reports"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h8l4 4v14H7Z"/><path d="M15 3v4h4M10 13h6M10 17h4"/></svg></span><span class="t">Signed reports and a year-end inspection file.</span><span class="chip live">Live</span></a>
+        </div>
+        <p class="small muted" style="margin:18px 0 0">Hosted in India, on AWS in Mumbai. <a class="tlink" style="min-height:0" href="security.html"><span>Read the security page</span></a></p>
+      </div>
+      <div class="shield rv" style="--o:6%" aria-hidden="true">
+        <div class="blob" style="inset:8% 6%;background:var(--blob-a);opacity:.9;animation-duration:20s"></div>
+        <div class="orb rotor"></div>
+        <svg class="s" viewBox="0 0 120 140"><path class="sh" pathLength="1" d="M60 6 L108 24 V68 C108 100 86 124 60 134 C34 124 12 100 12 68 V24 Z"/><path class="ck" pathLength="1" d="M38 70 L54 86 L84 52"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-300);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <!-- 3.9 Live in weeks -->
+  <section class="sec" aria-labelledby="live-h">
+    <div class="wrap">
+      <div class="center rv" style="max-width:760px">
+        <span class="eyebrow">Live in weeks, not months</span>
+        <h2 class="h2" id="live-h">Your school is running on it this term.</h2>
+      </div>
+      <div class="tl">
+        <div class="tl-line" aria-hidden="true"><div class="tl-fill"></div></div>
+        <div class="st rv"><span class="dot">1</span><h3>Setup wizard</h3><p>Your school, grades, sections and fee heads.</p><span class="small" style="font-weight:600;color:var(--brand)">Confirmed on your walkthrough</span></div>
+        <div class="st rv" style="--o:4%"><span class="dot">2</span><h3>Import from your sheets</h3><p>Students, staff and fee lists, from the files you already keep.</p><span class="small" style="font-weight:600;color:var(--brand)">Confirmed on your walkthrough</span></div>
+        <div class="st rv" style="--o:8%"><span class="dot">3</span><h3>Timetable setup</h3><p>Periods, subjects and teachers, so attendance and cover work from day one.</p><span class="small" style="font-weight:600;color:var(--brand)">Confirmed on your walkthrough</span></div>
+        <div class="st rv" style="--o:12%"><span class="dot">4</span><h3>Staff training</h3><p>Your champion teachers first, then the rest, with the handbook in hand.</p><span class="small" style="font-weight:600;color:var(--brand)">Confirmed on your walkthrough</span></div>
+        <div class="st rv" style="--o:16%"><span class="dot">5</span><h3>Parents in waves</h3><p>Invitations go out in groups, so the office is never flooded.</p><span class="small" style="font-weight:600;color:var(--brand)">Confirmed on your walkthrough</span></div>
+      </div>
+      <p class="small muted center rv" style="margin-top:40px;max-width:60ch">We will not print a number of weeks we have not measured. On the walkthrough we give you a plan sized to your school.</p>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-100);--wave:var(--surface-300)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <!-- 3.10 Team -->
+  <section class="sec" style="background:var(--surface-300)" aria-labelledby="team-h">
+    <div class="wrap">
+      <div class="g2" style="align-items:end">
+        <div class="rv">
+          <span class="eyebrow">Who you will be working with</span>
+          <h2 class="h2" id="team-h">Excellence has many dimensions. One team, building for every one.</h2>
+        </div>
+        <p class="lead rv" style="margin:0;--o:4%">Schools already put enormous effort into every child, every day. Gurukulam gives that effort a framework: one routine that connects management, teachers, parents and students, so everyone knows their part and nobody has to guess. We translate education research into everyday practice, so it becomes part of daily routine instead of a theory to interpret. Education is a shared responsibility, and we help every player take their part in it.</p>
+      </div>
+      <!-- TODO(follow up): team cards are hidden for now. Restore them when names, photos and credentials are ready. -->
+      <!--
+      <div class="g3" style="margin-top:48px">
+        <div class="tcard rv">
+          <div class="tphoto"><span class="ph">[PHOTO: 800 × 800, real, square]</span></div>
+          <div class="nm"><span class="ph">[PLACEHOLDER: full name]</span></div>
+          <div class="muted"><span class="ph">[PLACEHOLDER: plain role title]</span></div>
+          <div class="small"><span class="ph">[PLACEHOLDER: one line of credibility, 15 words]</span></div>
+        </div>
+        <div class="tcard rv" style="--o:5%">
+          <div class="tphoto"><span class="ph">[PHOTO: 800 × 800, real, square]</span></div>
+          <div class="nm"><span class="ph">[PLACEHOLDER: full name]</span></div>
+          <div class="muted"><span class="ph">[PLACEHOLDER: plain role title]</span></div>
+          <div class="small"><span class="ph">[PLACEHOLDER: one line of credibility, 15 words]</span></div>
+        </div>
+        <div class="tcard rv" style="--o:10%">
+          <div class="tphoto"><span class="ph">[PHOTO: 800 × 800, real, square]</span></div>
+          <div class="nm"><span class="ph">[PLACEHOLDER: full name]</span></div>
+          <div class="muted"><span class="ph">[PLACEHOLDER: plain role title]</span></div>
+          <div class="small"><span class="ph">[PLACEHOLDER: one line of credibility, 15 words]</span></div>
+        </div>
+      </div>
+      -->
+      <div class="g3" style="margin-top:48px">
+        <div class="how rv"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px;color:var(--brand)"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19V5"/></svg><span>The operations handbook ships with the product. <a href="#" style="color:var(--brand)">Open the handbook</a></span></div>
+        <div class="how rv" style="--o:4%"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px;color:var(--brand)"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>One person owns your onboarding from the first import to go-live.</span></div>
+        <div class="how rv" style="--o:8%"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px;color:var(--brand)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Support response commitment: 24 hours</span></div>
+      </div>
+      <p class="rv" style="margin:32px 0 0"><a class="tlink" href="about.html"><span>Read our vision for school excellence</span><svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--surface-300);--wave:var(--band)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <!-- 3.11 Pilot and final CTA -->
+  <section class="sec on-band" aria-labelledby="pilot-h">
+    <div class="kolam on-band" style="position:absolute;inset:0;opacity:.7;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000,transparent 75%)" aria-hidden="true"></div>
+    <div class="blob" style="width:420px;height:420px;right:-120px;top:-60px;background:var(--neel-600);opacity:.55;animation-duration:28s" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="center rv" style="max-width:780px">
+        <span class="eyebrow">The pilot</span>
+        <h2 class="h2" id="pilot-h">One term. Admissions and fees first. Your own numbers.</h2>
+      </div>
+      <div class="g3" style="margin-top:48px">
+        <div class="pcard rv"><h3>What we start with</h3><p>Admissions and fees. Both show a measurable result in one term.</p></div>
+        <div class="pcard rv" style="--o:5%"><h3>What we need from you</h3><p>A champion teacher per grade, your student and fee lists, and one admission campaign.</p></div>
+        <div class="pcard rv" style="--o:10%"><h3>What you get</h3><p>A before-and-after report on your own numbers.</p></div>
+      </div>
+      <div class="ctab">
+        <div class="rv">
+          <p style="margin:0"><a class="btn btn-accent" style="min-height:56px;font-size:17px" href="book.html">Book a 30-minute walkthrough
+            <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <p class="muted" style="margin:16px 0 0;max-width:46ch">We send five questions beforehand, so the calculator is filled with your numbers when we meet. Reach out for pricing.</p>
+        </div>
+        <div class="rv" style="--o:5%">
+          <form class="pcard" data-on-submit="noop" style="padding:22px">
+            <h3 style="font-size:19px">Not ready to talk? Get the ROI sheet.</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
+              <label class="bin"><span style="position:absolute;left:-9999px">Your email</span><input type="email" placeholder="you@school.in" required></label>
+              <button class="btn btn-band" type="submit">Email me the sheet</button>
+            </div>
+            <p style="margin:12px 0 0;font-size:13px;line-height:19px">We use your email only to send the sheet and to reply about a walkthrough. <a href="#" style="color:var(--akash-400)">Privacy policy</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave" style="background:var(--band);--wave:var(--surface-100)" aria-hidden="true"><svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 40 Q 180 0 360 40 T 720 40 T 1080 40 T 1440 40 T 1800 40 T 2160 40 T 2520 40 T 2880 40 V80 H0Z"/></svg></div>
+
+  <!-- 3.12 FAQ -->
+  <section class="sec" aria-labelledby="faq-h">
+    <div class="wrap" style="max-width:920px">
+      <div class="center rv">
+        <span class="eyebrow">Questions owners ask</span>
+        <h2 class="h2" id="faq-h">Honest answers, including the awkward ones.</h2>
+      </div>
+      <div class="faq rv" style="margin-top:44px">
+        <details open><summary>Will our teachers actually use it?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>It replaces work they already do. Attendance takes two taps <span class="chip live">Live</span> and homework is posted once and delivered to parents <span class="chip live">Live</span>. We ask for one champion teacher per grade, not a school-wide switch on day one.</p></div></details>
+        <details><summary>We already have an ERP. What happens to our data?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>During setup we import student, staff and fee lists from your current exports. What carries over depends on what your ERP can export, and we confirm that on the first call. Your old system stays untouched.</p></div></details>
+        <details><summary>What if parents do not have smartphones?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>Setu, the WhatsApp line, reaches parents who never install the app <span class="chip live">Live</span>. The missed-boarding alert falls back to SMS <span class="chip live">Live</span>.</p></div></details>
+        <details><summary>Who owns our data, and what happens if we leave?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>Your school owns its data, and each school's data is isolated from every other school <span class="chip live">Live</span>. Families can export their own data, you can export year-end records such as the board return and the inspection bundle, and on leaving we hand over a full export of your school's records. <a href="security.html" style="color:var(--brand)">Read the security page</a>.</p></div></details>
+        <details><summary>Can we start with only fees and admissions?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>Yes. A pilot starts with admissions and fees because both show a result you can measure on your own numbers within one term.</p></div></details>
+        <details><summary>What does it cost?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>Reach out for pricing, and we will price a pilot against your own numbers. <a href="pricing.html" style="color:var(--brand)">See what a pilot includes</a>.</p></div></details>
+        <details><summary>How long until we are live?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>It depends on your school's size and how tidy your sheets are. We give you a plan for your school on the walkthrough, and we will not quote a number of weeks we have not measured.</p></div></details>
+        <details><summary>What is not built yet?<span class="pm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <div class="ans"><p>These are coming, and we say so on every page: WhatsApp fee reminders with a pay link <span class="chip soon">Coming</span>, who-to-call ranking and seats-left forecast <span class="chip soon">Coming</span>, road-distance routing and auto-generated stops <span class="chip soon">Coming</span>, the class-pace view <span class="chip soon">Coming</span>, reach-and-read analytics <span class="chip soon">Coming</span>, the at-home steps page <span class="chip soon">Coming</span> and remedy status tracking <span class="chip soon">Coming</span>. Each is ready at go-live or it comes off this site. <a href="how-it-works.html#coming" style="color:var(--brand)">See the full list</a>.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  
+
+<footer class="ft on-band">
+  <div class="wave top" style="--wave:var(--band);display:none" aria-hidden="true"></div>
+  <div class="ft-in">
+    <div class="ft-top">
+      <div class="ft-brandcol">
+        <div class="ft-brand">
+          <img src="assets/img/logo.png" width="52" height="52" alt="" style="border-radius:50%;display:block">
+          <b>Gurukulam</b>
+        </div>
+        <p class="ft-tag">School excellence. Every dimension.</p>
+        <p class="ft-note">The operating system for your school: one platform for school management, teaching and parent communication. Built for private K-12 schools in India.</p>
+        <p style="margin:20px 0 0"><a class="btn btn-accent btn-sm" href="book.html">Book a 30-minute walkthrough</a></p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="fees.html">Fees</a></li>
+          <li><a href="transport.html">Transport</a></li>
+          <li><a href="learning.html">Learning &amp; teaching</a></li>
+          <li><a href="parents.html">Parents &amp; feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Help &amp; handbook</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="security.html#contact">Data-protection contact</a></li>
+        </ul>
+        <p style="margin:14px 0 0;font-size:14px;line-height:22px;color:var(--band-muted)">Write to <a href="mailto:privacy@gurukulam.ai" style="color:var(--band-ink)">privacy@gurukulam.ai</a></p>
+      </div>
+    </div>
+    <div class="ft-legal">
+      <span>© 2026 Gurukulam, Bengaluru</span>
+      <span>Made for Indian schools. ₹, lakh and crore, the way you count.</span>
+    </div>
+  </div>
+  <div class="ft-mark" aria-hidden="true">गुरुकुलम्</div>
+</footer>
+
+  <div class="consent" role="dialog" aria-label="Privacy choices">
+    <h5>Your privacy, your choice</h5>
+    <p>With your yes, we count four things: walkthrough bookings, ROI-sheet downloads, calculator completions and how far you read module pages. No advertising cookies. <a href="#" style="color:var(--brand)">Privacy policy</a></p>
+    <div class="row">
+      <button class="btn btn-primary btn-sm" type="button" data-on-click="decline">Decline</button>
+      <button class="btn btn-ghost btn-sm" type="button" data-on-click="decline">Accept counting</button>
+    </div>
+  </div>
+
+<div class="mbar">
+  <a class="btn btn-primary" href="book.html">Book a 30-minute walkthrough</a>
+</div>
+
+</div>
+
+<script src="assets/site.js" defer></script>
 </body>
 </html>
